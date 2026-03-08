@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Blocks XML — Scratch XML Injector Docs</title>
+  <title>Project XML — Scratch XML Injector Docs</title>
   <link rel="stylesheet" href="../assets/css/main.css"/>
 </head>
 <body>
@@ -13,8 +13,8 @@
   <nav class="topbar-nav">
     <a href="../index.html">Home</a>
     <a href="getting-started.html">Guide</a>
-    <a href="blocks-xml.html" class="active">Blocks XML</a>
-    <a href="project-xml.html">Project XML</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html" class="active">Project XML</a>
     <a href="opcodes.html">Opcodes</a>
     <a href="examples.html">Examples</a>
   </nav>
@@ -23,7 +23,6 @@
     <a class="topbar-github" href="https://scratch.mit.edu" target="_blank">↗ Scratch</a>
   </div>
 </header>
-
 <div class="layout">
   <aside class="sidebar">
     <div class="sidebar-section">Overview</div>
@@ -31,10 +30,10 @@
     <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
     <div class="sidebar-divider"></div>
     <div class="sidebar-section">Writing Code</div>
-    <a class="sidebar-link active" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
     <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
     <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
-    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link active" href="project-xml.html"><span class="icon">#</span>Project XML</a>
     <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
     <div class="sidebar-divider"></div>
     <div class="sidebar-section">Guides</div>
@@ -42,179 +41,152 @@
     <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
     <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
   </aside>
-
   <div class="content-wrap">
     <main class="content">
 
       <div class="page-header">
-        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>blocks-xml</span></div>
-        <h1>Blocks XML</h1>
-        <p class="lead">The complete reference for writing Blockly XML to inject scripts into a Scratch sprite's workspace.</p>
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>project-xml</span></div>
+        <h1>Project XML</h1>
+        <p class="lead">Bootstrap entire Scratch projects — multiple sprites, auto-rendered costumes, and complete block scripts — from a single XML document.</p>
         <div class="meta">
-          <span class="meta-tag green">Core concept</span>
-          <span class="meta-tag blue">~10 min read</span>
+          <span class="meta-tag yellow">⚠ Wipes project</span>
+          <span class="meta-tag blue">~8 min read</span>
         </div>
       </div>
 
-      <div class="doc-section" id="overview">
-        <h2 class="section-title"><span class="num">01</span>What is Blocks XML?</h2>
-        <p>Blocks XML is the <strong>native serialisation format</strong> that the Scratch editor uses internally to save and restore block workspaces. The injector reads this same format and loads it directly into the VM, bypassing the UI entirely.</p>
-        <p>When you use the <strong>Export</strong> tab to grab blocks from an existing project, you get Blocks XML. That XML can be edited and re-injected — this is the most reliable way to learn the format.</p>
-        <div class="callout info">
-          <div class="callout-icon">ℹ</div>
-          <div><strong>Pro tip:</strong> Build what you want in Scratch's block editor, then use the Export tab to read the XML. Compare it to this guide to understand the structure.</div>
-        </div>
+      <div class="callout danger">
+        <div class="callout-icon">⚠</div>
+        <div><strong>Destructive operation.</strong> Project XML mode <em>completely replaces</em> the current project. All existing sprites, costumes, sounds, and variables will be lost. Save your project via File → Save to your computer before using this mode.</div>
       </div>
 
-      <div class="doc-section" id="skeleton">
-        <h2 class="section-title"><span class="num">02</span>Document Skeleton</h2>
-        <p>Every Blocks XML document has this structure:</p>
-
+      <div class="doc-section" id="structure">
+        <h2 class="section-title"><span class="num">01</span>Document Structure</h2>
         <div class="code-block">
-          <div class="code-block-header">
-            <span class="code-block-lang">XML</span>
-            <button class="copy-btn">Copy</button>
+          <div class="code-block-header"><span class="code-block-lang">XML — Full skeleton</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-tag">&lt;project&gt;</span>
+
+  <span class="t-cm">&lt;!-- Optional: backdrop tint colour --&gt;</span>
+  <span class="t-tag">&lt;stage</span> <span class="t-attr">color</span>=<span class="t-val">"#0a0a1a"</span><span class="t-tag">/&gt;</span>
+
+  <span class="t-cm">&lt;!-- One or more sprites --&gt;</span>
+  <span class="t-tag">&lt;sprite</span> <span class="t-attr">name</span>=<span class="t-val">"Player"</span> <span class="t-attr">x</span>=<span class="t-val">"0"</span> <span class="t-attr">y</span>=<span class="t-val">"0"</span> <span class="t-attr">visible</span>=<span class="t-val">"true"</span><span class="t-tag">&gt;</span>
+
+    <span class="t-cm">&lt;!-- One or more costume descriptors --&gt;</span>
+    <span class="t-tag">&lt;costume</span> <span class="t-attr">type</span>=<span class="t-val">"circle"</span> <span class="t-attr">color</span>=<span class="t-val">"#4c8fff"</span>
+             <span class="t-attr">stroke</span>=<span class="t-val">"#88bbff"</span> <span class="t-attr">stroke-width</span>=<span class="t-val">"3"</span>
+             <span class="t-attr">size</span>=<span class="t-val">"40"</span><span class="t-tag">/&gt;</span>
+
+    <span class="t-cm">&lt;!-- Block scripts for this sprite --&gt;</span>
+    <span class="t-tag">&lt;blocks&gt;</span>
+      <span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+        <span class="t-cm">&lt;!-- standard Blockly XML goes here --&gt;</span>
+      <span class="t-tag">&lt;/xml&gt;</span>
+    <span class="t-tag">&lt;/blocks&gt;</span>
+
+  <span class="t-tag">&lt;/sprite&gt;</span>
+
+  <span class="t-cm">&lt;!-- Add as many &lt;sprite&gt; elements as you need --&gt;</span>
+
+<span class="t-tag">&lt;/project&gt;</span></code></pre>
+        </div>
+      </div>
+
+      <div class="doc-section" id="stage">
+        <h2 class="section-title"><span class="num">02</span>&lt;stage&gt; Element</h2>
+        <p>Controls the stage backdrop. Currently supports a single <code>color</code> attribute which is applied as a tint to the blank white SVG backdrop.</p>
+        <div class="attr-grid">
+          <div class="attr-card">
+            <div class="attr-name">color</div>
+            <div class="attr-type">string (CSS hex)</div>
+            <div class="attr-desc">Background fill colour for the stage backdrop.</div>
+            <div class="attr-default">Default: white (#ffffff)</div>
           </div>
-          <pre><code><span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
-
-  <span class="t-cm">&lt;!-- Each direct child &lt;block&gt; is an independent script stack.
-       Multiple stacks can exist side-by-side. --&gt;</span>
-
-  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"60"</span> <span class="t-attr">y</span>=<span class="t-val">"60"</span><span class="t-tag">&gt;</span>
-    <span class="t-cm">&lt;!-- blocks chained below via &lt;next&gt; --&gt;</span>
-  <span class="t-tag">&lt;/block&gt;</span>
-
-  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenkeypressed"</span> <span class="t-attr">x</span>=<span class="t-val">"300"</span> <span class="t-attr">y</span>=<span class="t-val">"60"</span><span class="t-tag">&gt;</span>
-    <span class="t-cm">&lt;!-- a separate script stack --&gt;</span>
-  <span class="t-tag">&lt;/block&gt;</span>
-
-<span class="t-tag">&lt;/xml&gt;</span></code></pre>
-        </div>
-
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Attribute</th><th>Required</th><th>Description</th></tr></thead>
-            <tbody>
-              <tr><td><code>xmlns</code> on <code>&lt;xml&gt;</code></td><td><span class="badge green">Yes</span></td><td>Identifies this as a Blockly XML document. Must be exactly as shown.</td></tr>
-              <tr><td><code>type</code> on <code>&lt;block&gt;</code></td><td><span class="badge green">Yes</span></td><td>The Scratch opcode string, e.g. <code>event_whenflagclicked</code>.</td></tr>
-              <tr><td><code>x</code>, <code>y</code> on top-level <code>&lt;block&gt;</code></td><td><span class="badge yellow">Optional</span></td><td>Workspace position of the stack (cosmetic only). Defaults to 0, 0.</td></tr>
-            </tbody>
-          </table>
         </div>
       </div>
 
-      <div class="doc-section" id="elements">
-        <h2 class="section-title"><span class="num">03</span>XML Elements</h2>
-
-        <h3 class="sub-title">&lt;block&gt; — a Scratch block</h3>
-        <p>Represents any Scratch block. The <code>type</code> attribute is the block's opcode. Child elements define inputs, fields, and the next block in the chain.</p>
-
-        <h3 class="sub-title">&lt;next&gt; — chain to the block below</h3>
-        <p>Wraps the next block in the vertical stack. Each block can have at most one <code>&lt;next&gt;</code>.</p>
-        <div class="code-block">
-          <div class="code-block-header"><span class="code-block-lang">XML — Chaining</span><button class="copy-btn">Copy</button></div>
-          <pre><code><span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_movesteps"</span><span class="t-tag">&gt;</span>
-  <span class="t-cm">&lt;!-- ...value inputs... --&gt;</span>
-  <span class="t-tag">&lt;next&gt;</span>
-    <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_ifonedgebounce"</span><span class="t-tag">/&gt;</span>
-  <span class="t-tag">&lt;/next&gt;</span>
-<span class="t-tag">&lt;/block&gt;</span></code></pre>
-        </div>
-
-        <h3 class="sub-title">&lt;value&gt; — an input slot</h3>
-        <p>Represents a rounded or pointed input slot on a block. The <code>name</code> attribute matches the block's documented input name (e.g. <code>STEPS</code>, <code>CONDITION</code>). Contains either a <code>&lt;shadow&gt;</code>, a <code>&lt;block&gt;</code>, or both.</p>
-
-        <h3 class="sub-title">&lt;shadow&gt; — default / placeholder value</h3>
-        <p>The grey "bubble" input that appears when nothing is connected. Must have a <code>type</code> matching a known shadow block opcode.</p>
-
-        <div class="code-block">
-          <div class="code-block-header"><span class="code-block-lang">XML — Number input</span><button class="copy-btn">Copy</button></div>
-          <pre><code><span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"STEPS"</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span>
-    <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>10<span class="t-tag">&lt;/field&gt;</span>
-  <span class="t-tag">&lt;/shadow&gt;</span>
-<span class="t-tag">&lt;/value&gt;</span></code></pre>
-        </div>
-
-        <h3 class="sub-title">&lt;field&gt; — a literal value</h3>
-        <p>A text field inside a block or shadow. The <code>name</code> attribute is the field's identifier. The text content is its value (number, string, or dropdown option).</p>
-
-        <h3 class="sub-title">&lt;statement&gt; — C-block interior</h3>
-        <p>Used for C-shaped blocks like <code>control_forever</code> and <code>control_if</code>. The <code>name</code> attribute is almost always <code>SUBSTACK</code> (or <code>SUBSTACK2</code> for the else branch of <code>control_if_else</code>).</p>
-
-        <div class="code-block">
-          <div class="code-block-header"><span class="code-block-lang">XML — C-block</span><button class="copy-btn">Copy</button></div>
-          <pre><code><span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_forever"</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
-    <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_movesteps"</span><span class="t-tag">&gt;</span>
-      <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"STEPS"</span><span class="t-tag">&gt;</span>
-        <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span>
-          <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>5<span class="t-tag">&lt;/field&gt;</span>
-        <span class="t-tag">&lt;/shadow&gt;</span>
-      <span class="t-tag">&lt;/value&gt;</span>
-    <span class="t-tag">&lt;/block&gt;</span>
-  <span class="t-tag">&lt;/statement&gt;</span>
-<span class="t-tag">&lt;/block&gt;</span></code></pre>
-        </div>
-
-        <h3 class="sub-title">&lt;mutation&gt; — custom block metadata</h3>
-        <p>Used by procedure (custom) blocks to carry parameter definitions. You generally don't need this unless working with "My Blocks".</p>
-      </div>
-
-      <div class="doc-section" id="shadow-types">
-        <h2 class="section-title"><span class="num">04</span>Shadow Block Types</h2>
-        <p>These are the available <code>type</code> values for <code>&lt;shadow&gt;</code> elements and their corresponding field names:</p>
-
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Shadow type</th><th>Field name</th><th>Used for</th></tr></thead>
-            <tbody>
-              <tr><td><code>math_number</code></td><td><code>NUM</code></td><td>Any numeric input</td></tr>
-              <tr><td><code>math_positive_number</code></td><td><code>NUM</code></td><td>Positive number inputs</td></tr>
-              <tr><td><code>math_whole_number</code></td><td><code>NUM</code></td><td>Whole number inputs</td></tr>
-              <tr><td><code>math_integer</code></td><td><code>NUM</code></td><td>Integer inputs</td></tr>
-              <tr><td><code>math_angle</code></td><td><code>NUM</code></td><td>Angle inputs (e.g. direction)</td></tr>
-              <tr><td><code>text</code></td><td><code>TEXT</code></td><td>String / text inputs</td></tr>
-              <tr><td><code>colour_picker</code></td><td><code>COLOUR</code></td><td>Color inputs</td></tr>
-              <tr><td><code>event_broadcast_menu</code></td><td><code>BROADCAST_OPTION</code></td><td>Broadcast name selector</td></tr>
-              <tr><td><code>sensing_keyoptions</code></td><td><code>KEY_OPTION</code></td><td>Keyboard key dropdown</td></tr>
-            </tbody>
-          </table>
+      <div class="doc-section" id="sprite">
+        <h2 class="section-title"><span class="num">03</span>&lt;sprite&gt; Element</h2>
+        <p>Each <code>&lt;sprite&gt;</code> creates one sprite in the project. Sprites are added in document order, with the first one on the bottom layer.</p>
+        <div class="attr-grid">
+          <div class="attr-card">
+            <div class="attr-name">name</div>
+            <div class="attr-type">string</div>
+            <div class="attr-desc">The sprite's display name in the editor.</div>
+            <div class="attr-default">Default: "Sprite"</div>
+          </div>
+          <div class="attr-card">
+            <div class="attr-name">x</div>
+            <div class="attr-type">number (−240 to 240)</div>
+            <div class="attr-desc">Starting X position on the stage.</div>
+            <div class="attr-default">Default: 0</div>
+          </div>
+          <div class="attr-card">
+            <div class="attr-name">y</div>
+            <div class="attr-type">number (−180 to 180)</div>
+            <div class="attr-desc">Starting Y position on the stage.</div>
+            <div class="attr-default">Default: 0</div>
+          </div>
+          <div class="attr-card">
+            <div class="attr-name">visible</div>
+            <div class="attr-type">boolean</div>
+            <div class="attr-desc">Whether the sprite is shown when the project starts.</div>
+            <div class="attr-default">Default: true</div>
+          </div>
         </div>
       </div>
 
-      <div class="doc-section" id="boolean-inputs">
-        <h2 class="section-title"><span class="num">05</span>Boolean &amp; Reporter Inputs</h2>
-        <p>Boolean blocks (hexagonal) and reporter blocks (rounded) are placed as real <code>&lt;block&gt;</code> elements inside a <code>&lt;value&gt;</code> — not as shadows:</p>
+      <div class="doc-section" id="costumes">
+        <h2 class="section-title"><span class="num">04</span>&lt;costume&gt; Elements</h2>
+        <p>The injector auto-generates PNG costumes from shape descriptors — no image files required. Each <code>&lt;sprite&gt;</code> must have at least one <code>&lt;costume&gt;</code> element.</p>
+        <p>See the full <a href="costumes.html">Costume Shapes reference →</a> for all attributes and visual examples.</p>
 
+        <h3 class="sub-title">Multiple costumes</h3>
+        <p>List multiple <code>&lt;costume&gt;</code> elements to give a sprite several costumes. Use <code>looks_switchcostumeto</code> to switch between them.</p>
         <div class="code-block">
-          <div class="code-block-header"><span class="code-block-lang">XML — Boolean input</span><button class="copy-btn">Copy</button></div>
-          <pre><code><span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_if"</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"CONDITION"</span><span class="t-tag">&gt;</span>
-    <span class="t-cm">&lt;!-- Boolean block — use &lt;block&gt;, not &lt;shadow&gt; --&gt;</span>
-    <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keypressed"</span><span class="t-tag">&gt;</span>
-      <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>
-        <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keyoptions"</span><span class="t-tag">&gt;</span>
-          <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>space<span class="t-tag">&lt;/field&gt;</span>
-        <span class="t-tag">&lt;/shadow&gt;</span>
-      <span class="t-tag">&lt;/value&gt;</span>
-    <span class="t-tag">&lt;/block&gt;</span>
-  <span class="t-tag">&lt;/value&gt;</span>
-  <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
-    <span class="t-cm">&lt;!-- blocks to run when condition is true --&gt;</span>
-  <span class="t-tag">&lt;/statement&gt;</span>
-<span class="t-tag">&lt;/block&gt;</span></code></pre>
+          <div class="code-block-header"><span class="code-block-lang">XML — Two costumes</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-tag">&lt;sprite</span> <span class="t-attr">name</span>=<span class="t-val">"Blinker"</span> <span class="t-attr">x</span>=<span class="t-val">"0"</span> <span class="t-attr">y</span>=<span class="t-val">"0"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;costume</span> <span class="t-attr">name</span>=<span class="t-val">"on"</span>  <span class="t-attr">type</span>=<span class="t-val">"circle"</span> <span class="t-attr">color</span>=<span class="t-val">"#ffee00"</span> <span class="t-attr">size</span>=<span class="t-val">"40"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;costume</span> <span class="t-attr">name</span>=<span class="t-val">"off"</span> <span class="t-attr">type</span>=<span class="t-val">"circle"</span> <span class="t-attr">color</span>=<span class="t-val">"#333333"</span> <span class="t-attr">size</span>=<span class="t-val">"40"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;blocks&gt;</span>
+    <span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"40"</span> <span class="t-attr">y</span>=<span class="t-val">"40"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;next&gt;</span>
+          <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_forever"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"looks_nextcostume"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;next&gt;</span>
+                  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_wait"</span><span class="t-tag">&gt;</span>
+                    <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DURATION"</span><span class="t-tag">&gt;</span>
+                      <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_positive_number"</span><span class="t-tag">&gt;</span>
+                        <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>0.5<span class="t-tag">&lt;/field&gt;</span>
+                      <span class="t-tag">&lt;/shadow&gt;</span>
+                    <span class="t-tag">&lt;/value&gt;</span>
+                  <span class="t-tag">&lt;/block&gt;</span>
+                <span class="t-tag">&lt;/next&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/statement&gt;</span>
+          <span class="t-tag">&lt;/block&gt;</span>
+        <span class="t-tag">&lt;/next&gt;</span>
+      <span class="t-tag">&lt;/block&gt;</span>
+    <span class="t-tag">&lt;/xml&gt;</span>
+    <span class="t-tag">&lt;/blocks&gt;</span>
+<span class="t-tag">&lt;/sprite&gt;</span></code></pre>
         </div>
+      </div>
+
+      <div class="doc-section" id="blocks">
+        <h2 class="section-title"><span class="num">05</span>&lt;blocks&gt; Element</h2>
+        <p>Contains the sprite's block scripts, wrapped in a standard <code>&lt;xml&gt;</code> Blockly document. This is identical to the Blocks XML format described in the <a href="blocks-xml.html">Blocks XML guide</a>.</p>
+        <p>If a sprite has no blocks, you can omit the <code>&lt;blocks&gt;</code> element entirely.</p>
       </div>
 
       <div class="doc-footer">
         <div class="footer-note">Last updated · v6.3</div>
         <div class="doc-nav-btns">
-          <a class="doc-nav-btn prev" href="getting-started.html"><span class="nav-label">Previous</span><span class="nav-title">Getting Started</span></a>
-          <a class="doc-nav-btn next" href="inputs-fields.html"><span class="nav-label">Next</span><span class="nav-title">Inputs &amp; Fields</span></a>
+          <a class="doc-nav-btn prev" href="inputs-fields.html"><span class="nav-label">Previous</span><span class="nav-title">Inputs &amp; Fields</span></a>
+          <a class="doc-nav-btn next" href="costumes.html"><span class="nav-label">Next</span><span class="nav-title">Costume Shapes</span></a>
         </div>
       </div>
-
     </main>
   </div>
 </div>
