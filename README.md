@@ -1,6 +1,6 @@
 # Scratch XML Injector — Wiki
 
-This is the documentation wiki for the Scratch XML Injector v7.0 userscript. Open `index.html` in your browser to get started.
+This is the documentation wiki for the Scratch XML Injector v7.0 userscript. Open https://lookmartes.github.io/scratch-xml-wiki/ in your browser to get started.
 
 ---
 
