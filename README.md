@@ -2,10 +2,6 @@
 
 Official documentation site for the [Scratch XML Injector](https://scratch.mit.edu) userscript (v6.3).
 
-## Live Site
-
-Once deployed: `https://YOUR-USERNAME.github.io/scratch-xml-wiki/`
-
 ## Contents
 
 | Page | Description |
