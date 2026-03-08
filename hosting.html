@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Opcode Reference — Scratch XML Injector Docs</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+<header class="topbar">
+  <a class="topbar-logo" href="../index.html"><div class="logo-mark">S</div><span class="logo-name">SXI <span class="logo-sub">Docs</span></span></a>
+  <nav class="topbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html" class="active">Opcodes</a>
+    <a href="examples.html">Examples</a>
+  </nav>
+  <div class="topbar-right">
+    <span class="topbar-badge">v6.3</span>
+    <a class="topbar-github" href="https://scratch.mit.edu" target="_blank">↗ Scratch</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link active" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+
+  <div class="content-wrap">
+    <main class="content">
+
+      <div class="page-header">
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>opcodes</span></div>
+        <h1>Opcode Reference</h1>
+        <p class="lead">Every common Scratch block opcode with its <code>type</code> string, input names, and field values. Use these as the <code>type</code> attribute on <code>&lt;block&gt;</code> elements.</p>
+        <div class="meta">
+          <span class="meta-tag indigo">Reference</span>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-icon">ℹ</div>
+        <div>Each opcode listed here is the exact string to use as <code>type="…"</code> on a <code>&lt;block&gt;</code> element. Value inputs go in <code>&lt;value name="…"&gt;</code>. Fields go in <code>&lt;field name="…"&gt;</code>.</div>
+      </div>
+
+      <!-- EVENTS -->
+      <div class="doc-section" id="events">
+        <h2 class="section-title"><span class="num">Events</span></h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Opcode</th><th>Block label</th><th>Inputs / Fields</th></tr></thead>
+            <tbody>
+              <tr><td><code>event_whenflagclicked</code></td><td>When 🏳 clicked</td><td>—</td></tr>
+              <tr><td><code>event_whenkeypressed</code></td><td>When [ ] key pressed</td><td>field <code>KEY_OPTION</code></td></tr>
+              <tr><td><code>event_whenthisspriteclicked</code></td><td>When this sprite clicked</td><td>—</td></tr>
+              <tr><td><code>event_whenstageclicked</code></td><td>When stage clicked</td><td>—</td></tr>
+              <tr><td><code>event_whenbroadcastreceived</code></td><td>When I receive [ ]</td><td>field <code>BROADCAST_OPTION</code></td></tr>
+              <tr><td><code>event_broadcast</code></td><td>Broadcast ( )</td><td>value <code>BROADCAST_INPUT</code> → shadow <code>event_broadcast_menu</code></td></tr>
+              <tr><td><code>event_broadcastandwait</code></td><td>Broadcast ( ) and wait</td><td>value <code>BROADCAST_INPUT</code></td></tr>
+              <tr><td><code>event_whengreaterthan</code></td><td>When [ ] &gt; ( )</td><td>field <code>WHENGREATERTHANMENU</code>, value <code>VALUE</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- MOTION -->
+      <div class="doc-section" id="motion">
+        <h2 class="section-title"><span class="num">Motion</span></h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Opcode</th><th>Block label</th><th>Inputs</th></tr></thead>
+            <tbody>
+              <tr><td><code>motion_movesteps</code></td><td>Move ( ) steps</td><td><code>STEPS</code></td></tr>
+              <tr><td><code>motion_turnright</code></td><td>Turn ↻ ( ) degrees</td><td><code>DEGREES</code></td></tr>
+              <tr><td><code>motion_turnleft</code></td><td>Turn ↺ ( ) degrees</td><td><code>DEGREES</code></td></tr>
+              <tr><td><code>motion_goto</code></td><td>Go to ( )</td><td>value <code>TO</code> → shadow <code>motion_goto_menu</code></td></tr>
+              <tr><td><code>motion_gotoxy</code></td><td>Go to x:( ) y:( )</td><td><code>X</code>, <code>Y</code></td></tr>
+              <tr><td><code>motion_glideto</code></td><td>Glide ( ) secs to ( )</td><td><code>SECS</code>, <code>TO</code></td></tr>
+              <tr><td><code>motion_glidesecstoxy</code></td><td>Glide ( ) secs to x:( ) y:( )</td><td><code>SECS</code>, <code>X</code>, <code>Y</code></td></tr>
+              <tr><td><code>motion_pointindirection</code></td><td>Point in direction ( )</td><td><code>DIRECTION</code></td></tr>
+              <tr><td><code>motion_pointtowards</code></td><td>Point towards ( )</td><td>value <code>TOWARDS</code></td></tr>
+              <tr><td><code>motion_changexby</code></td><td>Change x by ( )</td><td><code>DX</code></td></tr>
+              <tr><td><code>motion_setx</code></td><td>Set x to ( )</td><td><code>X</code></td></tr>
+              <tr><td><code>motion_changeyby</code></td><td>Change y by ( )</td><td><code>DY</code></td></tr>
+              <tr><td><code>motion_sety</code></td><td>Set y to ( )</td><td><code>Y</code></td></tr>
+              <tr><td><code>motion_ifonedgebounce</code></td><td>If on edge, bounce</td><td>—</td></tr>
+              <tr><td><code>motion_setrotationstyle</code></td><td>Set rotation style [ ]</td><td>field <code>STYLE</code></td></tr>
+              <tr><td><code>motion_xposition</code></td><td>x position <em>(reporter)</em></td><td>—</td></tr>
+              <tr><td><code>motion_yposition</code></td><td>y position <em>(reporter)</em></td><td>—</td></tr>
+              <tr><td><code>motion_direction</code></td><td>direction <em>(reporter)</em></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- LOOKS -->
+      <div class="doc-section" id="looks">
+        <h2 class="section-title"><span class="num">Looks</span></h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Opcode</th><th>Block label</th><th>Inputs / Fields</th></tr></thead>
+            <tbody>
+              <tr><td><code>looks_say</code></td><td>Say ( )</td><td><code>MESSAGE</code></td></tr>
+              <tr><td><code>looks_sayforsecs</code></td><td>Say ( ) for ( ) secs</td><td><code>MESSAGE</code>, <code>SECS</code></td></tr>
+              <tr><td><code>looks_think</code></td><td>Think ( )</td><td><code>MESSAGE</code></td></tr>
+              <tr><td><code>looks_thinkforsecs</code></td><td>Think ( ) for ( ) secs</td><td><code>MESSAGE</code>, <code>SECS</code></td></tr>
+              <tr><td><code>looks_switchcostumeto</code></td><td>Switch costume to ( )</td><td>value <code>COSTUME</code></td></tr>
+              <tr><td><code>looks_nextcostume</code></td><td>Next costume</td><td>—</td></tr>
+              <tr><td><code>looks_switchbackdropto</code></td><td>Switch backdrop to ( )</td><td>value <code>BACKDROP</code></td></tr>
+              <tr><td><code>looks_nextbackdrop</code></td><td>Next backdrop</td><td>—</td></tr>
+              <tr><td><code>looks_changesizeby</code></td><td>Change size by ( )</td><td><code>CHANGE</code></td></tr>
+              <tr><td><code>looks_setsizeto</code></td><td>Set size to ( )%</td><td><code>SIZE</code></td></tr>
+              <tr><td><code>looks_changeeffectby</code></td><td>Change [ ] effect by ( )</td><td>field <code>EFFECT</code>, value <code>CHANGE</code></td></tr>
+              <tr><td><code>looks_seteffectto</code></td><td>Set [ ] effect to ( )</td><td>field <code>EFFECT</code>, value <code>VALUE</code></td></tr>
+              <tr><td><code>looks_cleargraphiceffects</code></td><td>Clear graphic effects</td><td>—</td></tr>
+              <tr><td><code>looks_show</code></td><td>Show</td><td>—</td></tr>
+              <tr><td><code>looks_hide</code></td><td>Hide</td><td>—</td></tr>
+              <tr><td><code>looks_gotofrontback</code></td><td>Go to [ ] layer</td><td>field <code>FRONT_BACK</code></td></tr>
+              <tr><td><code>looks_goforwardbackwardlayers</code></td><td>Go [ ] ( ) layers</td><td>field <code>FORWARD_BACKWARD</code>, value <code>NUM</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CONTROL -->
+      <div class="doc-section" id="control">
+        <h2 class="section-title"><span class="num">Control</span></h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Opcode</th><th>Block label</th><th>Inputs / Fields</th></tr></thead>
+            <tbody>
+              <tr><td><code>control_wait</code></td><td>Wait ( ) seconds</td><td><code>DURATION</code></td></tr>
+              <tr><td><code>control_repeat</code></td><td>Repeat ( ) { }</td><td><code>TIMES</code>, statement <code>SUBSTACK</code></td></tr>
+              <tr><td><code>control_forever</code></td><td>Forever { }</td><td>statement <code>SUBSTACK</code></td></tr>
+              <tr><td><code>control_if</code></td><td>If &lt;&gt; then { }</td><td><code>CONDITION</code>, statement <code>SUBSTACK</code></td></tr>
+              <tr><td><code>control_if_else</code></td><td>If &lt;&gt; then { } else { }</td><td><code>CONDITION</code>, statements <code>SUBSTACK</code> &amp; <code>SUBSTACK2</code></td></tr>
+              <tr><td><code>control_wait_until</code></td><td>Wait until &lt;&gt;</td><td><code>CONDITION</code></td></tr>
+              <tr><td><code>control_repeat_until</code></td><td>Repeat until &lt;&gt; { }</td><td><code>CONDITION</code>, statement <code>SUBSTACK</code></td></tr>
+              <tr><td><code>control_stop</code></td><td>Stop [ ]</td><td>field <code>STOP_OPTION</code></td></tr>
+              <tr><td><code>control_start_as_clone</code></td><td>When I start as a clone</td><td>—</td></tr>
+              <tr><td><code>control_create_clone_of</code></td><td>Create clone of ( )</td><td>value <code>CLONE_OPTION</code></td></tr>
+              <tr><td><code>control_delete_this_clone</code></td><td>Delete this clone</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SENSING -->
+      <div class="doc-section" id="sensing">
+        <h2 class="section-title"><span class="num">Sensing</span></h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Opcode</th><th>Block label</th><th>Inputs / Fields</th></tr></thead>
+            <tbody>
+              <tr><td><code>sensing_touchingobject</code></td><td>Touching ( )?</td><td>value <code>TOUCHINGOBJECTMENU</code></td></tr>
+              <tr><td><code>sensing_touchingcolor</code></td><td>Touching color ( )?</td><td>value <code>COLOR</code></td></tr>
+              <tr><td><code>sensing_coloristouchingcolor</code></td><td>Color ( ) is touching ( )?</td><td>values <code>COLOR</code>, <code>COLOR2</code></td></tr>
+              <tr><td><code>sensing_distanceto</code></td><td>Distance to ( )</td><td>value <code>DISTANCETOMENU</code></td></tr>
+              <tr><td><code>sensing_askandwait</code></td><td>Ask ( ) and wait</td><td>value <code>QUESTION</code></td></tr>
+              <tr><td><code>sensing_answer</code></td><td>answer <em>(reporter)</em></td><td>—</td></tr>
+              <tr><td><code>sensing_keypressed</code></td><td>Key ( ) pressed?</td><td>value <code>KEY_OPTION</code> → shadow <code>sensing_keyoptions</code></td></tr>
+              <tr><td><code>sensing_mousedown</code></td><td>Mouse down? <em>(bool)</em></td><td>—</td></tr>
+              <tr><td><code>sensing_mousex</code></td><td>Mouse x <em>(reporter)</em></td><td>—</td></tr>
+              <tr><td><code>sensing_mousey</code></td><td>Mouse y <em>(reporter)</em></td><td>—</td></tr>
+              <tr><td><code>sensing_setdragmode</code></td><td>Set drag mode [ ]</td><td>field <code>DRAG_MODE</code></td></tr>
+              <tr><td><code>sensing_loudness</code></td><td>loudness <em>(reporter)</em></td><td>—</td></tr>
+              <tr><td><code>sensing_timer</code></td><td>timer <em>(reporter)</em></td><td>—</td></tr>
+              <tr><td><code>sensing_resettimer</code></td><td>Reset timer</td><td>—</td></tr>
+              <tr><td><code>sensing_of</code></td><td>( ) of ( )</td><td>field <code>PROPERTY</code>, value <code>OBJECT</code></td></tr>
+              <tr><td><code>sensing_current</code></td><td>Current ( )</td><td>field <code>CURRENTMENU</code></td></tr>
+              <tr><td><code>sensing_dayssince2000</code></td><td>Days since 2000 <em>(reporter)</em></td><td>—</td></tr>
+              <tr><td><code>sensing_username</code></td><td>Username <em>(reporter)</em></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- OPERATORS -->
+      <div class="doc-section" id="operators">
+        <h2 class="section-title"><span class="num">Operators</span></h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Opcode</th><th>Block</th><th>Inputs</th></tr></thead>
+            <tbody>
+              <tr><td><code>operator_add</code></td><td>( ) + ( )</td><td><code>NUM1</code>, <code>NUM2</code></td></tr>
+              <tr><td><code>operator_subtract</code></td><td>( ) - ( )</td><td><code>NUM1</code>, <code>NUM2</code></td></tr>
+              <tr><td><code>operator_multiply</code></td><td>( ) × ( )</td><td><code>NUM1</code>, <code>NUM2</code></td></tr>
+              <tr><td><code>operator_divide</code></td><td>( ) ÷ ( )</td><td><code>NUM1</code>, <code>NUM2</code></td></tr>
+              <tr><td><code>operator_random</code></td><td>Pick random ( ) to ( )</td><td><code>FROM</code>, <code>TO</code></td></tr>
+              <tr><td><code>operator_gt</code></td><td>( ) &gt; ( )</td><td><code>OPERAND1</code>, <code>OPERAND2</code></td></tr>
+              <tr><td><code>operator_lt</code></td><td>( ) &lt; ( )</td><td><code>OPERAND1</code>, <code>OPERAND2</code></td></tr>
+              <tr><td><code>operator_equals</code></td><td>( ) = ( )</td><td><code>OPERAND1</code>, <code>OPERAND2</code></td></tr>
+              <tr><td><code>operator_and</code></td><td>( ) and ( )</td><td><code>OPERAND1</code>, <code>OPERAND2</code></td></tr>
+              <tr><td><code>operator_or</code></td><td>( ) or ( )</td><td><code>OPERAND1</code>, <code>OPERAND2</code></td></tr>
+              <tr><td><code>operator_not</code></td><td>not ( )</td><td><code>OPERAND</code></td></tr>
+              <tr><td><code>operator_join</code></td><td>Join ( ) ( )</td><td><code>STRING1</code>, <code>STRING2</code></td></tr>
+              <tr><td><code>operator_letter_of</code></td><td>Letter ( ) of ( )</td><td><code>LETTER</code>, <code>STRING</code></td></tr>
+              <tr><td><code>operator_length</code></td><td>Length of ( )</td><td><code>STRING</code></td></tr>
+              <tr><td><code>operator_contains</code></td><td>( ) contains ( )?</td><td><code>STRING1</code>, <code>STRING2</code></td></tr>
+              <tr><td><code>operator_mod</code></td><td>( ) mod ( )</td><td><code>NUM1</code>, <code>NUM2</code></td></tr>
+              <tr><td><code>operator_round</code></td><td>Round ( )</td><td><code>NUM</code></td></tr>
+              <tr><td><code>operator_mathop</code></td><td>[ ] of ( )</td><td>field <code>OPERATOR</code>, value <code>NUM</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="sub-title">operator_mathop — OPERATOR values</h3>
+        <p>Valid values for the <code>OPERATOR</code> field on <code>operator_mathop</code>:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 24px">
+          <code>abs</code><code>floor</code><code>ceiling</code><code>sqrt</code>
+          <code>sin</code><code>cos</code><code>tan</code>
+          <code>asin</code><code>acos</code><code>atan</code>
+          <code>ln</code><code>log</code><code>e ^</code><code>10 ^</code>
+        </div>
+      </div>
+
+      <!-- VARIABLES -->
+      <div class="doc-section" id="variables">
+        <h2 class="section-title"><span class="num">Variables</span></h2>
+        <div class="callout warn">
+          <div class="callout-icon">⚠</div>
+          <div>Variable and list blocks require matching variable definitions in the project's <code>targets</code> JSON. When using Blocks XML mode against an existing project, existing variables work. In Project XML mode, variables must be declared in the sprite's target data — this is an advanced use case not fully supported by the current XML format.</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Opcode</th><th>Block</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td><code>data_setvariableto</code></td><td>Set [ ] to ( )</td><td>field <code>VARIABLE</code>, value <code>VALUE</code></td></tr>
+              <tr><td><code>data_changevariableby</code></td><td>Change [ ] by ( )</td><td>field <code>VARIABLE</code>, value <code>VALUE</code></td></tr>
+              <tr><td><code>data_showvariable</code></td><td>Show variable [ ]</td><td>field <code>VARIABLE</code></td></tr>
+              <tr><td><code>data_hidevariable</code></td><td>Hide variable [ ]</td><td>field <code>VARIABLE</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">Last updated · v6.3</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn prev" href="blocks-xml.html"><span class="nav-label">Previous</span><span class="nav-title">Blocks XML</span></a>
+          <a class="doc-nav-btn next" href="inputs-fields.html"><span class="nav-label">Next</span><span class="nav-title">Inputs &amp; Fields</span></a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+<script src="../assets/js/wiki.js"></script>
+</body>
+</html>

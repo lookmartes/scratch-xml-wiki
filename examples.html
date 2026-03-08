@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Inputs &amp; Fields — Scratch XML Injector Docs</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+<header class="topbar">
+  <a class="topbar-logo" href="../index.html"><div class="logo-mark">S</div><span class="logo-name">SXI <span class="logo-sub">Docs</span></span></a>
+  <nav class="topbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html">Opcodes</a>
+    <a href="examples.html">Examples</a>
+  </nav>
+  <div class="topbar-right">
+    <span class="topbar-badge">v6.3</span>
+    <a class="topbar-github" href="https://scratch.mit.edu" target="_blank">↗ Scratch</a>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link active" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+  <div class="content-wrap">
+    <main class="content">
+
+      <div class="page-header">
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>inputs-fields</span></div>
+        <h1>Inputs &amp; Fields</h1>
+        <p class="lead">A focused guide on writing every type of input and field correctly — numbers, strings, booleans, dropdowns, and colours.</p>
+        <div class="meta"><span class="meta-tag green">Core concept</span></div>
+      </div>
+
+      <div class="doc-section" id="number">
+        <h2 class="section-title"><span class="num">01</span>Number Input</h2>
+        <p>The most common input pattern. Use a <code>math_number</code> shadow inside a <code>&lt;value&gt;</code>:</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">XML</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"STEPS"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>10<span class="t-tag">&lt;/field&gt;</span>
+  <span class="t-tag">&lt;/shadow&gt;</span>
+<span class="t-tag">&lt;/value&gt;</span></code></pre>
+        </div>
+        <p>To use a negative number, simply write a negative value in <code>&lt;field name="NUM"&gt;</code> — e.g. <code>-5</code>.</p>
+        <p>Other number shadow variants: <code>math_positive_number</code>, <code>math_whole_number</code>, <code>math_integer</code>, <code>math_angle</code>. All use the same <code>NUM</code> field name.</p>
+      </div>
+
+      <div class="doc-section" id="text">
+        <h2 class="section-title"><span class="num">02</span>Text / String Input</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">XML</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"MESSAGE"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"text"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"TEXT"</span><span class="t-tag">&gt;</span>Hello, World!<span class="t-tag">&lt;/field&gt;</span>
+  <span class="t-tag">&lt;/shadow&gt;</span>
+<span class="t-tag">&lt;/value&gt;</span></code></pre>
+        </div>
+        <div class="callout warn">
+          <div class="callout-icon">⚠</div>
+          <div>Avoid non-ASCII characters (smart quotes, emoji, accented letters) in field values. These can cause <code>FixedAsciiString</code> errors. Use only plain ASCII text or click "Strip Non-ASCII" in the panel.</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="boolean">
+        <h2 class="section-title"><span class="num">03</span>Boolean Input</h2>
+        <p>Boolean values (hexagonal blocks) are placed as real <code>&lt;block&gt;</code> elements inside a <code>&lt;value&gt;</code>. Never as a <code>&lt;shadow&gt;</code>.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">XML — Key pressed boolean</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"CONDITION"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keypressed"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keyoptions"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>space<span class="t-tag">&lt;/field&gt;</span>
+      <span class="t-tag">&lt;/shadow&gt;</span>
+    <span class="t-tag">&lt;/value&gt;</span>
+  <span class="t-tag">&lt;/block&gt;</span>
+<span class="t-tag">&lt;/value&gt;</span></code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">XML — Compound boolean (A and B)</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"CONDITION"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"operator_and"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"OPERAND1"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keypressed"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>
+          <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keyoptions"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>up arrow<span class="t-tag">&lt;/field&gt;</span>
+          <span class="t-tag">&lt;/shadow&gt;</span>
+        <span class="t-tag">&lt;/value&gt;</span>
+      <span class="t-tag">&lt;/block&gt;</span>
+    <span class="t-tag">&lt;/value&gt;</span>
+    <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"OPERAND2"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_mousedown"</span><span class="t-tag">/&gt;</span>
+    <span class="t-tag">&lt;/value&gt;</span>
+  <span class="t-tag">&lt;/block&gt;</span>
+<span class="t-tag">&lt;/value&gt;</span></code></pre>
+        </div>
+      </div>
+
+      <div class="doc-section" id="dropdown">
+        <h2 class="section-title"><span class="num">04</span>Dropdown Fields</h2>
+        <p>Some blocks expose a dropdown as a <code>&lt;field&gt;</code> directly on the block element. Here are the valid values for the most common dropdowns:</p>
+
+        <h3 class="sub-title">KEY_OPTION — keyboard keys</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 24px">
+          <code>space</code><code>left arrow</code><code>right arrow</code><code>up arrow</code><code>down arrow</code>
+          <code>enter</code><code>a</code><code>b</code><code>c</code><code>d</code><code>e</code>
+          <code>f</code><code>g</code><code>h</code><code>i</code><code>j</code><code>k</code><code>l</code>
+          <code>m</code><code>n</code><code>o</code><code>p</code><code>q</code><code>r</code><code>s</code>
+          <code>t</code><code>u</code><code>v</code><code>w</code><code>x</code><code>y</code><code>z</code>
+          <code>0</code><code>1</code><code>2</code><code>3</code><code>4</code><code>5</code><code>6</code><code>7</code><code>8</code><code>9</code>
+        </div>
+
+        <h3 class="sub-title">STOP_OPTION — control_stop</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 24px">
+          <code>all</code><code>this script</code><code>other scripts in sprite</code>
+        </div>
+
+        <h3 class="sub-title">STYLE — motion_setrotationstyle</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 24px">
+          <code>all around</code><code>left-right</code><code>don't rotate</code>
+        </div>
+
+        <h3 class="sub-title">EFFECT — looks_changeeffectby / looks_seteffectto</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 24px">
+          <code>COLOR</code><code>FISHEYE</code><code>WHIRL</code><code>PIXELATE</code><code>MOSAIC</code><code>BRIGHTNESS</code><code>GHOST</code>
+        </div>
+
+        <h3 class="sub-title">OPERATOR — operator_mathop</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 24px">
+          <code>abs</code><code>floor</code><code>ceiling</code><code>sqrt</code><code>sin</code><code>cos</code><code>tan</code><code>asin</code><code>acos</code><code>atan</code><code>ln</code><code>log</code><code>e ^</code><code>10 ^</code>
+        </div>
+
+        <h3 class="sub-title">CURRENTMENU — sensing_current</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 24px">
+          <code>YEAR</code><code>MONTH</code><code>DATE</code><code>DAYOFWEEK</code><code>HOUR</code><code>MINUTE</code><code>SECOND</code>
+        </div>
+      </div>
+
+      <div class="doc-section" id="reporter-inside-value">
+        <h2 class="section-title"><span class="num">05</span>Reporter Block as Input</h2>
+        <p>To use a reporter block (like <code>sensing_timer</code> or <code>motion_xposition</code>) as an input value, place it as a <code>&lt;block&gt;</code> alongside a <code>&lt;shadow&gt;</code>:</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">XML — Reporter + shadow</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>
+  <span class="t-cm">&lt;!-- The real block (reporter) --&gt;</span>
+  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_timer"</span><span class="t-tag">/&gt;</span>
+  <span class="t-cm">&lt;!-- Shadow is still provided as fallback --&gt;</span>
+  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>0<span class="t-tag">&lt;/field&gt;</span>
+  <span class="t-tag">&lt;/shadow&gt;</span>
+<span class="t-tag">&lt;/value&gt;</span></code></pre>
+        </div>
+        <div class="callout info">
+          <div class="callout-icon">ℹ</div>
+          <div>When both a <code>&lt;block&gt;</code> and <code>&lt;shadow&gt;</code> are present in a <code>&lt;value&gt;</code>, the real block is used and the shadow acts as the hidden fallback — matching how Scratch stores it internally.</div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">Last updated · v6.3</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn prev" href="opcodes.html"><span class="nav-label">Previous</span><span class="nav-title">Opcode Reference</span></a>
+          <a class="doc-nav-btn next" href="project-xml.html"><span class="nav-label">Next</span><span class="nav-title">Project XML</span></a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+<script src="../assets/js/wiki.js"></script>
+</body>
+</html>

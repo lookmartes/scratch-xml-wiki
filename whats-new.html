@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Troubleshooting — Scratch XML Injector Docs</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+<header class="topbar">
+  <a class="topbar-logo" href="../index.html"><div class="logo-mark">S</div><span class="logo-name">SXI <span class="logo-sub">Docs</span></span></a>
+  <nav class="topbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html">Opcodes</a>
+    <a href="examples.html">Examples</a>
+  </nav>
+  <div class="topbar-right"><span class="topbar-badge">v6.3</span></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link active" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+  <div class="content-wrap">
+    <main class="content">
+      <div class="page-header">
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>troubleshooting</span></div>
+        <h1>Troubleshooting</h1>
+        <p class="lead">Solutions to common errors and unexpected behaviour when using the Scratch XML Injector.</p>
+        <div class="meta"><span class="meta-tag indigo">Reference</span></div>
+      </div>
+
+      <div class="doc-section" id="common-errors">
+        <h2 class="section-title"><span class="num">01</span>Common Errors</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Error / Symptom</th><th>Cause</th><th>Fix</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>VM not found</strong></td>
+                <td>The injector couldn't locate the Scratch VM instance in the page.</td>
+                <td>Do a hard reload (<kbd>Ctrl+Shift+R</kbd>) of the editor page, then run the script again. Make sure you're inside the project editor (after clicking "See inside"), not just the project page.</td>
+              </tr>
+              <tr>
+                <td><strong>FixedAsciiString error</strong> in browser console</td>
+                <td>Non-ASCII characters (smart quotes, emoji, accented letters) in your XML were passed to Scratch's asset validator.</td>
+                <td>Click the <strong>~ Strip Non-ASCII</strong> button in the panel before injecting, or write your XML in a plain text editor that doesn't auto-correct characters.</td>
+              </tr>
+              <tr>
+                <td><strong>XML parse error</strong></td>
+                <td>Your XML is malformed — missing a closing tag, unclosed attribute, or invalid character.</td>
+                <td>Validate your XML at <a href="https://www.xmlvalidation.com" target="_blank">xmlvalidation.com</a>. The most common mistake is a missing <code>&lt;/next&gt;</code> or <code>&lt;/statement&gt;</code>.</td>
+              </tr>
+              <tr>
+                <td><strong>Blocks injected but workspace is empty</strong></td>
+                <td>The injector targeted the wrong sprite, or a workspace/reload conflict occurred.</td>
+                <td>Make sure the correct sprite is selected in the sprite list. Try the injection again — a second attempt often succeeds after the VM settles.</td>
+              </tr>
+              <tr>
+                <td><strong>Project build fails silently</strong></td>
+                <td>An error occurred during the project rebuild that was caught internally.</td>
+                <td>Open browser DevTools (<kbd>F12</kbd> → Console tab) — the full error message is always logged there with an <code>[SXI]</code> prefix.</td>
+              </tr>
+              <tr>
+                <td><strong>Sprites appear with no costume / blank white square</strong></td>
+                <td>The <code>type</code> attribute on <code>&lt;costume&gt;</code> is missing or misspelled.</td>
+                <td>Check that <code>type</code> is exactly <code>circle</code> or <code>rectangle</code> (lowercase).</td>
+              </tr>
+              <tr>
+                <td><strong>Panel doesn't appear</strong></td>
+                <td>Tampermonkey is disabled on this tab, or the script ran while the panel was already open (toggle closed).</td>
+                <td>Click the Tampermonkey icon and verify it's enabled for this site. Check that the script is active in Dashboard.</td>
+              </tr>
+              <tr>
+                <td><strong>"Not a &lt;project&gt; XML" error in Project mode</strong></td>
+                <td>You're in Project XML mode but pasted Blocks XML (<code>&lt;xml&gt;</code> root).</td>
+                <td>Switch the mode toggle to <strong>~ Blocks XML</strong>, or change the root element of your document to <code>&lt;project&gt;</code>.</td>
+              </tr>
+              <tr>
+                <td><strong>Blocks appear but don't work when flag clicked</strong></td>
+                <td>A block opcode string is incorrect or an input type mismatches.</td>
+                <td>Use the <strong>Export</strong> tab on a working block in Scratch to see its correct XML, then compare to your code.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" id="non-ascii">
+        <h2 class="section-title"><span class="num">02</span>Non-ASCII Characters in Depth</h2>
+        <p>Scratch's internal asset storage uses a validator called <code>FixedAsciiString</code> that rejects any string containing characters above Unicode codepoint 127. This includes:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px">
+          <span class="badge yellow">Smart quotes " "</span>
+          <span class="badge yellow">Em dash —</span>
+          <span class="badge yellow">Ellipsis …</span>
+          <span class="badge yellow">Accents é ñ ü</span>
+          <span class="badge yellow">Emoji 🎮</span>
+          <span class="badge yellow">Non-breaking space</span>
+        </div>
+        <p>These often appear when copying XML from a word processor, rich text editor, or web page that applies "smart" formatting.</p>
+
+        <div class="callout success">
+          <div class="callout-icon">✓</div>
+          <div>The injector <strong>automatically strips</strong> non-ASCII characters before each injection attempt. You can also click <strong>~ Strip Non-ASCII</strong> manually. The yellow badge "! non-ASCII detected" appears when your pasted XML contains problem characters.</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="debugging">
+        <h2 class="section-title"><span class="num">03</span>Debugging Tips</h2>
+
+        <h3 class="sub-title">Use the Export tab first</h3>
+        <p>The single most powerful debugging technique: build the block you're trying to create manually in Scratch's block editor, then use the Export tab to see exactly what the injector-compatible XML looks like. Compare it character-by-character with your code.</p>
+
+        <h3 class="sub-title">Check the browser console</h3>
+        <p>Open DevTools (<kbd>F12</kbd>) → Console. Every error the injector catches is logged with an <code>[SXI v6.x]</code> prefix. The full stack trace and error message will tell you exactly what went wrong.</p>
+
+        <h3 class="sub-title">Validate your XML</h3>
+        <p>An XML validator will catch structural errors before you even try to inject. Paste your XML at <a href="https://www.xmlvalidation.com" target="_blank">xmlvalidation.com</a> and fix any parse errors first.</p>
+
+        <h3 class="sub-title">Test with a minimal example</h3>
+        <p>If a large block of XML fails, strip it down to the smallest possible working unit (just the hat block), then add pieces back one at a time until you find the broken section.</p>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">Last updated · v6.3</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn prev" href="examples.html"><span class="nav-label">Previous</span><span class="nav-title">Examples</span></a>
+          <a class="doc-nav-btn next" href="hosting.html"><span class="nav-label">Next</span><span class="nav-title">Hosting on GitHub</span></a>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/wiki.js"></script>
+</body>
+</html>

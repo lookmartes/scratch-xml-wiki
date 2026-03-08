@@ -3,237 +3,211 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Scratch XML Injector — Documentation</title>
-  <meta name="description" content="Official documentation for the Scratch XML Injector userscript. Learn how to write Blockly XML and Project XML to inject sprites, costumes, and scripts into Scratch."/>
-  <link rel="stylesheet" href="assets/css/main.css"/>
+  <title>Copy Script — Scratch XML Injector Docs</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
 </head>
 <body>
 <div id="scroll-bar"></div>
-
-<!-- TOPBAR -->
 <header class="topbar">
-  <a class="topbar-logo" href="index.html">
-    <div class="logo-mark">S</div>
-    <span class="logo-name">SXI <span class="logo-sub">Docs</span></span>
-  </a>
+  <a class="topbar-logo" href="../index.html"><div class="logo-mark">S</div><span class="logo-name">SXI <span class="logo-sub">Docs</span></span></a>
   <nav class="topbar-nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="docs/getting-started.html">Guide</a>
-    <a href="docs/blocks-xml.html">Blocks XML</a>
-    <a href="docs/project-xml.html">Project XML</a>
-    <a href="docs/opcodes.html">Opcodes</a>
-    <a href="docs/examples.html">Examples</a>
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html">Opcodes</a>
+    <a href="examples.html">Examples</a>
   </nav>
-  <div class="topbar-right">
-    <span class="topbar-badge">v7.0</span>
-    <a class="topbar-github" href="https://scratch.mit.edu" target="_blank">↗ Scratch</a>
-  </div>
+  <div class="topbar-right"><span class="topbar-badge">v7.0</span></div>
 </header>
-
-<!-- LAYOUT -->
 <div class="layout">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-section">Overview</div>
-    <a class="sidebar-link active" href="index.html"><span class="icon">◈</span>Introduction</a>
-    <a class="sidebar-link" href="docs/whats-new.html"><span class="icon">★</span>What's New in v7.0</a>
-    <a class="sidebar-link" href="docs/getting-started.html"><span class="icon">↓</span>Getting Started</a>
-
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link" href="whats-new.html"><span class="icon">★</span>What's New in v7.0</a>
+    <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
     <div class="sidebar-divider"></div>
     <div class="sidebar-section">Writing Code</div>
-    <a class="sidebar-link" href="docs/blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
-    <a class="sidebar-link" href="docs/opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
-    <a class="sidebar-link" href="docs/inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
-    <a class="sidebar-link" href="docs/project-xml.html"><span class="icon">#</span>Project XML</a>
-    <a class="sidebar-link" href="docs/costumes.html"><span class="icon">◉</span>Costume Shapes</a>
-
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
     <div class="sidebar-divider"></div>
     <div class="sidebar-section">Guides</div>
-    <a class="sidebar-link" href="docs/inject-modes.html"><span class="icon">⇒</span>Inject Modes</a>
-    <a class="sidebar-link" href="docs/export-modes.html"><span class="icon">↑</span>Export Modes</a>
-    <a class="sidebar-link" href="docs/copy-script.html"><span class="icon">&lt;/&gt;</span>Copy Script</a>
-    <a class="sidebar-link" href="docs/examples.html"><span class="icon">▷</span>Examples</a>
-    <a class="sidebar-link" href="docs/troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
-    <a class="sidebar-link" href="docs/hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+    <a class="sidebar-link" href="inject-modes.html"><span class="icon">⇒</span>Inject Modes</a>
+    <a class="sidebar-link" href="export-modes.html"><span class="icon">↑</span>Export Modes</a>
+    <a class="sidebar-link active" href="copy-script.html"><span class="icon">&lt;/&gt;</span>Copy Script</a>
+    <a class="sidebar-link" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
   </aside>
-
-  <!-- CONTENT -->
   <div class="content-wrap">
     <main class="content">
 
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero-kicker">
-          <span class="dot"></span>
-          Scratch XML Injector · v6.3
-        </div>
-        <h1>
-          Inject code into<br>
-          <span class="accent">Scratch &amp; TurboWarp</span>
-        </h1>
-        <p>
-          A powerful browser userscript that lets you programmatically create sprites,
-          costumes, and block scripts using XML — without any drag-and-drop.
-        </p>
-        <div class="hero-btns">
-          <a class="btn-primary" href="docs/getting-started.html">Get started →</a>
-          <a class="btn-secondary" href="docs/blocks-xml.html">Browse the docs</a>
-        </div>
-      </section>
+      <div class="page-header">
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>copy-script</span></div>
+        <h1>Copy Script</h1>
+        <p class="lead">The <code>&lt;/&gt; Script</code> tab lets you access and copy the injector's userscript source code without leaving the Scratch editor.</p>
+        <div class="meta"><span class="meta-tag indigo">v7.0</span></div>
+      </div>
 
-      <!-- FEATURES -->
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">📝</div>
-          <div class="feature-title">Blocks XML</div>
-          <div class="feature-desc">Inject standard Blockly XML directly into the active sprite's workspace — any script, any complexity.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🏗</div>
-          <div class="feature-title">Project XML</div>
-          <div class="feature-desc">Bootstrap entire projects from a single XML document — sprites, auto-rendered costumes, and scripts all at once.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📤</div>
-          <div class="feature-title">Export XML</div>
-          <div class="feature-desc">Read the current sprite's Blockly XML back out of Scratch to copy, edit, and reuse your blocks anywhere.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎨</div>
-          <div class="feature-title">Shape Costumes</div>
-          <div class="feature-desc">Auto-generate circle and rectangle costumes from simple XML attributes — no image files required.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔧</div>
-          <div class="feature-title">Non-ASCII Fix</div>
-          <div class="feature-desc">One-click stripping of non-ASCII characters that cause Scratch's internal asset validator to reject blocks.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <div class="feature-title">TurboWarp Ready</div>
-          <div class="feature-desc">Works on both <code>scratch.mit.edu</code> and <code>turbowarp.org</code> — same script, same XML.</div>
+      <div class="doc-section" id="what-it-does">
+        <h2 class="section-title"><span class="num">01</span>What the Script Tab Does</h2>
+        <p>The <code>&lt;/&gt; Script</code> tab is a quick-access panel for the injector's own source code. It's useful when:</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">A</div>
+            <div class="step-body">
+              <h4>Sharing the script</h4>
+              <p>You want to copy and send the script to a friend without going to the Tampermonkey dashboard.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">B</div>
+            <div class="step-body">
+              <h4>Installing on another browser</h4>
+              <p>You're on a different computer and want to install the script quickly.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">C</div>
+            <div class="step-body">
+              <h4>Verifying the version</h4>
+              <p>You want to check which version of the script is currently running.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- QUICK START -->
-      <h2 class="section-title">Quick Start</h2>
-      <div class="qs-wrap">
-        <div class="qs-tabs">
-          <button class="qs-tab active" data-tab="qs-blocks">Blocks XML</button>
-          <button class="qs-tab" data-tab="qs-project">Project XML</button>
-          <button class="qs-tab" data-tab="qs-export">Export</button>
+      <div class="doc-section" id="how-to-copy">
+        <h2 class="section-title"><span class="num">02</span>How to Copy the Script</h2>
+
+        <h3 class="sub-title">Method A — From the Script tab (fastest)</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Open the &lt;/&gt; Script tab</h4>
+              <p>Click the <code>&lt;/&gt; Script</code> tab in the injector panel.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Click "[cp] Copy Script"</h4>
+              <p>The script source or instructions are copied to your clipboard automatically.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Or click "Select All" then Ctrl+C</h4>
+              <p>This selects the entire text in the box, which you can then copy manually with <kbd>Ctrl+C</kbd>.</p>
+            </div>
+          </div>
         </div>
-        <div id="qs-blocks" class="qs-pane active">
-          <pre><code><span class="t-cm">&lt;!-- Paste into the injector panel in "Blocks XML" mode --&gt;</span>
-<span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
 
-  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"60"</span> <span class="t-attr">y</span>=<span class="t-val">"60"</span><span class="t-tag">&gt;</span>
-    <span class="t-tag">&lt;next&gt;</span>
-      <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_forever"</span><span class="t-tag">&gt;</span>
-        <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
-          <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_turnright"</span><span class="t-tag">&gt;</span>
-            <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DEGREES"</span><span class="t-tag">&gt;</span>
-              <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span>
-                <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>5<span class="t-tag">&lt;/field&gt;</span>
-              <span class="t-tag">&lt;/shadow&gt;</span>
-            <span class="t-tag">&lt;/value&gt;</span>
-          <span class="t-tag">&lt;/block&gt;</span>
-        <span class="t-tag">&lt;/statement&gt;</span>
-      <span class="t-tag">&lt;/block&gt;</span>
-    <span class="t-tag">&lt;/next&gt;</span>
-  <span class="t-tag">&lt;/block&gt;</span>
-
-<span class="t-tag">&lt;/xml&gt;</span></code></pre>
+        <div class="callout info">
+          <div class="callout-icon">ℹ</div>
+          <div>When the injector runs as a <strong>Tampermonkey userscript</strong>, browser security prevents the page from reading the script's own injected source code directly. In this case, the Script tab shows instructions pointing you to the Tampermonkey dashboard instead.</div>
         </div>
-        <div id="qs-project" class="qs-pane">
-          <pre><code><span class="t-cm">&lt;!-- "Project XML" mode — creates sprites + costumes + blocks --&gt;</span>
-<span class="t-tag">&lt;project&gt;</span>
-  <span class="t-tag">&lt;stage</span> <span class="t-attr">color</span>=<span class="t-val">"#0a0a1a"</span><span class="t-tag">/&gt;</span>
 
-  <span class="t-tag">&lt;sprite</span> <span class="t-attr">name</span>=<span class="t-val">"Player"</span> <span class="t-attr">x</span>=<span class="t-val">"0"</span> <span class="t-attr">y</span>=<span class="t-val">"0"</span><span class="t-tag">&gt;</span>
-    <span class="t-tag">&lt;costume</span> <span class="t-attr">type</span>=<span class="t-val">"circle"</span> <span class="t-attr">color</span>=<span class="t-val">"#4c8fff"</span> <span class="t-attr">size</span>=<span class="t-val">"40"</span><span class="t-tag">/&gt;</span>
-    <span class="t-tag">&lt;blocks&gt;</span>
-      <span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
-        <span class="t-cm">&lt;!-- block scripts here --&gt;</span>
-      <span class="t-tag">&lt;/xml&gt;</span>
-    <span class="t-tag">&lt;/blocks&gt;</span>
-  <span class="t-tag">&lt;/sprite&gt;</span>
-<span class="t-tag">&lt;/project&gt;</span></code></pre>
+        <h3 class="sub-title">Method B — From Tampermonkey Dashboard (always works)</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Click the Tampermonkey icon</h4>
+              <p>In your browser toolbar, click the Tampermonkey icon (the black and white circle).</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Open Dashboard</h4>
+              <p>Click <strong>Dashboard</strong> from the dropdown menu.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Find the script and click Edit</h4>
+              <p>Find <strong>Scratch XML Injector</strong> in the list. Click the pencil (edit) icon.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Select All and Copy</h4>
+              <p>Click inside the editor, press <kbd>Ctrl+A</kbd> to select all, then <kbd>Ctrl+C</kbd> to copy.</p>
+            </div>
+          </div>
         </div>
-        <div id="qs-export" class="qs-pane">
-          <pre><code><span class="t-cm">// Export tab → click "Grab XML" to read the current sprite's blocks
-// The XML output looks like this — you can edit it and re-inject it:</span>
 
-<span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"40"</span> <span class="t-attr">y</span>=<span class="t-val">"40"</span><span class="t-tag">&gt;</span>
-    <span class="t-cm">&lt;!-- ... your existing blocks ... --&gt;</span>
-  <span class="t-tag">&lt;/block&gt;</span>
-<span class="t-tag">&lt;/xml&gt;</span>
-
-<span class="t-cm">// Then click "Copy" to get it in your clipboard.</span></code></pre>
+        <h3 class="sub-title">Method C — From this wiki</h3>
+        <p>The v7.0 script file is included in the wiki's GitHub repository as <code>scratch-xml-injector.user.js</code>. If you're hosting this wiki on GitHub Pages, you can find the raw file at:</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">URL</span></div>
+          <pre><code>https://YOUR-USERNAME.github.io/scratch-xml-wiki/scratch-xml-injector.user.js</code></pre>
         </div>
+        <p>Or from the GitHub repo directly:</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">URL</span></div>
+          <pre><code>https://raw.githubusercontent.com/YOUR-USERNAME/scratch-xml-wiki/main/scratch-xml-injector.user.js</code></pre>
+        </div>
+        <p>Tampermonkey can install scripts directly from raw URLs — just visit the URL and Tampermonkey will prompt you to install.</p>
       </div>
 
-      <!-- DOC CARDS -->
-      <h2 class="section-title">Documentation</h2>
-      <div class="card-grid">
-        <a class="card" href="docs/whats-new.html">
-          <div class="card-icon">★</div>
-          <div class="card-title">What's New in v7.0</div>
-          <div class="card-desc">New inject modes, project export, append blocks, and copy script tab.</div>
-          <div class="card-arrow">→ See changes</div>
-        </a>
-        <a class="card" href="docs/getting-started.html">
-          <div class="card-icon">↓</div>
-          <div class="card-title">Getting Started</div>
-          <div class="card-desc">Install Tampermonkey, load the script, and run your first injection.</div>
-          <div class="card-arrow">→ Read guide</div>
-        </a>
-        <a class="card" href="docs/blocks-xml.html">
-          <div class="card-icon">~</div>
-          <div class="card-title">Blocks XML</div>
-          <div class="card-desc">Learn the Blockly XML format — blocks, inputs, shadows, fields, and statements.</div>
-          <div class="card-arrow">→ Read guide</div>
-        </a>
-        <a class="card" href="docs/opcodes.html">
-          <div class="card-icon">≡</div>
-          <div class="card-title">Opcode Reference</div>
-          <div class="card-desc">Every common Scratch opcode with its input and field names.</div>
-          <div class="card-arrow">→ View reference</div>
-        </a>
-        <a class="card" href="docs/project-xml.html">
-          <div class="card-icon">#</div>
-          <div class="card-title">Project XML</div>
-          <div class="card-desc">Build complete multi-sprite projects from a single XML document.</div>
-          <div class="card-arrow">→ Read guide</div>
-        </a>
-        <a class="card" href="docs/examples.html">
-          <div class="card-icon">▷</div>
-          <div class="card-title">Examples</div>
-          <div class="card-desc">Copy-pasteable examples: movement, conditions, full projects, and more.</div>
-          <div class="card-arrow">→ See examples</div>
-        </a>
-        <a class="card" href="docs/troubleshooting.html">
-          <div class="card-icon">!</div>
-          <div class="card-title">Troubleshooting</div>
-          <div class="card-desc">Fix common errors including VM not found, non-ASCII issues, and parse failures.</div>
-          <div class="card-arrow">→ Get help</div>
-        </a>
+      <div class="doc-section" id="installing">
+        <h2 class="section-title"><span class="num">03</span>Installing the Script from Copied Source</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Open Tampermonkey Dashboard</h4>
+              <p>Click the Tampermonkey icon → <strong>Dashboard</strong>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Create a new script</h4>
+              <p>Click the <strong>+</strong> tab at the top of the Dashboard.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Delete the default content</h4>
+              <p>Select all (<kbd>Ctrl+A</kbd>) and delete the placeholder code.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Paste and save</h4>
+              <p>Paste the copied script (<kbd>Ctrl+V</kbd>), then save with <kbd>Ctrl+S</kbd>. The script is now active.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout success">
+          <div class="callout-icon">✓</div>
+          <div>To <strong>update</strong> an existing installation, open the edit view for the old script, select all, paste the new source, and save. The old script is replaced in-place.</div>
+        </div>
       </div>
 
       <div class="doc-footer">
-        <div class="footer-note">
-          Scratch XML Injector · v7.0 · Unofficial community documentation<br>
-          <a href="https://scratch.mit.edu" target="_blank">Scratch</a> is a project of the MIT Media Lab.
+        <div class="footer-note">Last updated · v7.0</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn prev" href="export-modes.html"><span class="nav-label">Previous</span><span class="nav-title">Export Modes</span></a>
+          <a class="doc-nav-btn next" href="examples.html"><span class="nav-label">Next</span><span class="nav-title">Examples</span></a>
         </div>
       </div>
-
     </main>
   </div>
-
 </div>
-
-<script src="assets/js/wiki.js"></script>
+<script src="../assets/js/wiki.js"></script>
 </body>
 </html>

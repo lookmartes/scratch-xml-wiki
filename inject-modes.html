@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Export Modes — Scratch XML Injector Docs</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+<header class="topbar">
+  <a class="topbar-logo" href="../index.html"><div class="logo-mark">S</div><span class="logo-name">SXI <span class="logo-sub">Docs</span></span></a>
+  <nav class="topbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html">Opcodes</a>
+    <a href="examples.html">Examples</a>
+  </nav>
+  <div class="topbar-right"><span class="topbar-badge">v7.0</span></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link" href="whats-new.html"><span class="icon">★</span>What's New in v7.0</a>
+    <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link" href="inject-modes.html"><span class="icon">⇒</span>Inject Modes</a>
+    <a class="sidebar-link active" href="export-modes.html"><span class="icon">↑</span>Export Modes</a>
+    <a class="sidebar-link" href="copy-script.html"><span class="icon">&lt;/&gt;</span>Copy Script</a>
+    <a class="sidebar-link" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+  <div class="content-wrap">
+    <main class="content">
+
+      <div class="page-header">
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>export-modes</span></div>
+        <h1>Export Modes</h1>
+        <p class="lead">v7.0 adds a second export button — grab just the active sprite's blocks, or export your entire project as re-injectable XML.</p>
+        <div class="meta"><span class="meta-tag indigo">v7.0</span><span class="meta-tag blue">Reference</span></div>
+      </div>
+
+      <div class="doc-section" id="overview">
+        <h2 class="section-title"><span class="num">Overview</span></h2>
+        <p>The <strong>[cp] Export</strong> tab has two grab buttons and one copy button:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Button</th><th>Output format</th><th>Scope</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Grab Sprite XML</strong></td>
+                <td><code>&lt;xml xmlns="..."&gt;</code></td>
+                <td>Active sprite's blocks only</td>
+              </tr>
+              <tr>
+                <td><strong>Grab Project XML</strong></td>
+                <td><code>&lt;project&gt;&lt;sprite&gt;...&lt;/sprite&gt;&lt;/project&gt;</code></td>
+                <td>All sprites in the entire project</td>
+              </tr>
+              <tr>
+                <td><strong>[cp] Copy to Clipboard</strong></td>
+                <td>—</td>
+                <td>Copies whatever is in the output box</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" id="sprite-xml">
+        <h2 class="section-title"><span class="num">01</span>Grab Sprite XML</h2>
+        <p>Reads the current sprite's Blockly workspace and serialises it to a <code>&lt;xml&gt;</code> Blockly document. This is identical to the v6.3 export behaviour.</p>
+
+        <h3 class="sub-title">Use cases</h3>
+        <p>The most common use is learning: build blocks in Scratch's visual editor, then grab the XML to understand what the structure looks like. You can then hand-write similar XML and inject it back.</p>
+        <p>You can also use it as a <strong>backup/restore</strong> — grab a sprite's XML before running Replace Blocks, then re-inject it if something goes wrong.</p>
+
+        <h3 class="sub-title">Output example</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">Sprite XML output (example)</span></div>
+          <pre><code><span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"40"</span> <span class="t-attr">y</span>=<span class="t-val">"40"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;next&gt;</span>
+      <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_movesteps"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"STEPS"</span><span class="t-tag">&gt;</span>
+          <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>10<span class="t-tag">&lt;/field&gt;</span>
+          <span class="t-tag">&lt;/shadow&gt;</span>
+        <span class="t-tag">&lt;/value&gt;</span>
+      <span class="t-tag">&lt;/block&gt;</span>
+    <span class="t-tag">&lt;/next&gt;</span>
+  <span class="t-tag">&lt;/block&gt;</span>
+<span class="t-tag">&lt;/xml&gt;</span></code></pre>
+        </div>
+      </div>
+
+      <div class="doc-section" id="project-xml">
+        <h2 class="section-title"><span class="num">02</span>Grab Project XML</h2>
+        <p>Reads the entire live project from the Scratch VM, converts every sprite's sb3 block JSON back to readable Blockly XML, and wraps everything in a <code>&lt;project&gt;</code> document.</p>
+
+        <h3 class="sub-title">Output structure</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">Project XML output (structure)</span></div>
+          <pre><code><span class="t-tag">&lt;project&gt;</span>
+  <span class="t-tag">&lt;sprite</span> <span class="t-attr">name</span>=<span class="t-val">"Player"</span> <span class="t-attr">x</span>=<span class="t-val">"0"</span> <span class="t-attr">y</span>=<span class="t-val">"-100"</span> <span class="t-attr">visible</span>=<span class="t-val">"true"</span><span class="t-tag">&gt;</span>
+    <span class="t-cm">&lt;!-- costume: player (png) --&gt;</span>
+    <span class="t-tag">&lt;blocks&gt;</span>
+      <span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"40"</span> <span class="t-attr">y</span>=<span class="t-val">"40"</span><span class="t-tag">&gt;</span>
+          <span class="t-cm">&lt;!-- ... blocks ... --&gt;</span>
+        <span class="t-tag">&lt;/block&gt;</span>
+      <span class="t-tag">&lt;/xml&gt;</span>
+    <span class="t-tag">&lt;/blocks&gt;</span>
+  <span class="t-tag">&lt;/sprite&gt;</span>
+  <span class="t-tag">&lt;sprite</span> <span class="t-attr">name</span>=<span class="t-val">"Enemy"</span> <span class="t-attr">x</span>=<span class="t-val">"80"</span> <span class="t-attr">y</span>=<span class="t-val">"60"</span> <span class="t-attr">visible</span>=<span class="t-val">"true"</span><span class="t-tag">&gt;</span>
+    <span class="t-cm">&lt;!-- costume: enemy (png) --&gt;</span>
+    <span class="t-tag">&lt;blocks&gt;</span>
+      <span class="t-cm">&lt;!-- ... --&gt;</span>
+    <span class="t-tag">&lt;/blocks&gt;</span>
+  <span class="t-tag">&lt;/sprite&gt;</span>
+<span class="t-tag">&lt;/project&gt;</span></code></pre>
+        </div>
+
+        <h3 class="sub-title">Costume comments</h3>
+        <p>Because PNG costume data cannot be losslessly round-tripped back into shape attributes, each costume is represented as a comment: <code>&lt;!-- costume: name (format) --&gt;</code>. To make the exported XML re-injectable with correct costumes, add <code>&lt;costume type="..."&gt;</code> elements manually above the <code>&lt;blocks&gt;</code> element.</p>
+
+        <h3 class="sub-title">Re-injecting exported XML</h3>
+        <p>The exported <code>&lt;project&gt;</code> XML can be pasted directly back into the Inject tab in either <strong>[#] New Project</strong> or <strong>[+] Add to Project</strong> mode. The blocks will be restored exactly.</p>
+
+        <div class="callout info">
+          <div class="callout-icon">ℹ</div>
+          <div>This is the recommended way to <strong>save and restore</strong> a project's script state. Grab → Copy → save to a text file → re-inject any time.</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="copy-workflow">
+        <h2 class="section-title"><span class="num">03</span>Full Copy Workflow</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Open the Export tab</h4>
+              <p>Click <strong>[cp] Export</strong> in the panel's tab bar.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Choose what to export</h4>
+              <p>Click <strong>Grab Sprite XML</strong> for the active sprite only, or <strong>Grab Project XML</strong> for the whole project.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Copy to clipboard</h4>
+              <p>Click <strong>[cp] Copy to Clipboard</strong>. The button flashes green when the copy succeeds.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Paste anywhere</h4>
+              <p>Paste into a text editor, another project's injector, or the wiki's example box.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">Last updated · v7.0</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn prev" href="inject-modes.html"><span class="nav-label">Previous</span><span class="nav-title">Inject Modes</span></a>
+          <a class="doc-nav-btn next" href="copy-script.html"><span class="nav-label">Next</span><span class="nav-title">Copy Script</span></a>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/wiki.js"></script>
+</body>
+</html>
