@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>New in v7.0 — Scratch XML Injector Docs</title>
+  <meta name="description" content="All new features in v7.0: Copy Project XML, Copy Sprite XML, Add to Project (merge), Append Blocks, and Copy Script tab."/>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+<header class="topbar">
+  <a class="topbar-logo" href="../index.html"><div class="logo-mark">S</div><span class="logo-name">SXI <span class="logo-sub">Docs</span></span></a>
+  <nav class="topbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html">Opcodes</a>
+    <a href="examples.html">Examples</a>
+  </nav>
+  <div class="topbar-right">
+    <span class="topbar-badge">v7.0</span>
+    <a class="topbar-github" href="https://scratch.mit.edu" target="_blank">↗ Scratch</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link active" href="whats-new.html"><span class="icon">★</span>What's New in v7.0</a>
+    <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link" href="inject-modes.html"><span class="icon">⇒</span>Inject Modes</a>
+    <a class="sidebar-link" href="export-modes.html"><span class="icon">↑</span>Export Modes</a>
+    <a class="sidebar-link" href="copy-script.html"><span class="icon">&lt;/&gt;</span>Copy Script</a>
+    <a class="sidebar-link" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+
+  <div class="content-wrap">
+    <main class="content">
+
+      <div class="page-header">
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>whats-new</span></div>
+        <h1>What's New in v7.0</h1>
+        <p class="lead">A complete overhaul of the panel — four inject modes, two export modes, a copy-script tab, and a full project XML exporter.</p>
+        <div class="meta">
+          <span class="meta-tag indigo">v7.0</span>
+          <span class="meta-tag green">Changelog</span>
+        </div>
+      </div>
+
+      <!-- OVERVIEW CARDS -->
+      <div class="card-grid" style="margin-bottom:48px">
+        <a class="card" href="inject-modes.html">
+          <div class="card-icon">⇒</div>
+          <div class="card-title">4 Inject Modes</div>
+          <div class="card-desc">New Project, Add to Project, Replace Blocks, Append Blocks — each with a distinct color and button.</div>
+          <div class="card-arrow">→ Learn modes</div>
+        </a>
+        <a class="card" href="export-modes.html">
+          <div class="card-icon">↑</div>
+          <div class="card-title">2 Export Modes</div>
+          <div class="card-desc">Grab the active sprite's blocks only, or export the entire project as a copyable &lt;project&gt; document.</div>
+          <div class="card-arrow">→ Learn export</div>
+        </a>
+        <a class="card" href="copy-script.html">
+          <div class="card-icon">&lt;/&gt;</div>
+          <div class="card-title">Copy Script Tab</div>
+          <div class="card-desc">A dedicated tab that lets you copy the injector's own source code directly to your clipboard.</div>
+          <div class="card-arrow">→ Learn more</div>
+        </a>
+      </div>
+
+      <!-- NEW INJECT MODES -->
+      <div class="doc-section" id="inject-modes">
+        <h2 class="section-title"><span class="num">01</span>Four Inject Modes</h2>
+        <p>v6.3 had two modes: <em>Project XML</em> and <em>Blocks XML</em>. v7.0 splits these into four distinct modes to give you precise control over what gets overwritten and what doesn't.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Mode</th><th>Input</th><th>What it does</th><th>Destructive?</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="badge red">[#] New Project</span></td>
+                <td><code>&lt;project&gt;</code></td>
+                <td>Wipes every sprite and builds a completely new project from the XML.</td>
+                <td><span class="badge red">Yes — all sprites</span></td>
+              </tr>
+              <tr>
+                <td><span class="badge green">[+] Add to Project</span></td>
+                <td><code>&lt;project&gt;</code></td>
+                <td>Merges new sprites in. If a sprite with the same name already exists, its blocks and costumes are updated. Other sprites are untouched.</td>
+                <td><span class="badge yellow">Partial — named sprite only</span></td>
+              </tr>
+              <tr>
+                <td><span class="badge yellow">~ Replace Blocks</span></td>
+                <td><code>&lt;xml&gt;</code></td>
+                <td>Clears the active sprite's block workspace and replaces it with the new XML. All other sprites untouched.</td>
+                <td><span class="badge yellow">Sprite blocks only</span></td>
+              </tr>
+              <tr>
+                <td><span class="badge indigo">[+] Append Blocks</span></td>
+                <td><code>&lt;xml&gt;</code></td>
+                <td>Adds the new blocks to the active sprite's workspace <em>without removing anything</em>. Existing scripts are preserved.</td>
+                <td><span class="badge green">None</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout info">
+          <div class="callout-icon">ℹ</div>
+          <div>The <strong>! Example</strong> button is mode-aware — it loads a Project XML example when a project mode is active, and a Blocks XML example when a blocks mode is active.</div>
+        </div>
+      </div>
+
+      <!-- ADD TO PROJECT -->
+      <div class="doc-section" id="add-to-project">
+        <h2 class="section-title"><span class="num">02</span>Add to Project (Merge Mode)</h2>
+        <p>This is the most-requested v7.0 feature. Previously you had to wipe your entire project to inject new sprites. Now you can paste a <code>&lt;project&gt;</code> document and the injector will <strong>merge</strong> it into the running project.</p>
+
+        <h3 class="sub-title">Merge rules</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Situation</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Sprite in XML <strong>does not exist</strong> in project</td>
+                <td>Sprite is created fresh with new costumes and blocks.</td>
+              </tr>
+              <tr>
+                <td>Sprite in XML <strong>has the same name</strong> as an existing sprite</td>
+                <td>That sprite's <strong>blocks are replaced</strong>. Costumes are replaced if the XML includes any <code>&lt;costume&gt;</code> elements.</td>
+              </tr>
+              <tr>
+                <td>Existing sprite <strong>not mentioned</strong> in XML</td>
+                <td>Completely untouched — its blocks, costumes, position, and variables are preserved.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>This allows a powerful workflow: build your game project sprite by sprite, injecting one at a time without ever needing to rebuild the whole thing.</p>
+
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">XML — Add a single new sprite to existing project</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-cm">&lt;!-- Mode: [+] Add to Project
+     This adds "Bullet" without touching Player, Enemy, etc. --&gt;</span>
+<span class="t-tag">&lt;project&gt;</span>
+  <span class="t-tag">&lt;sprite</span> <span class="t-attr">name</span>=<span class="t-val">"Bullet"</span> <span class="t-attr">x</span>=<span class="t-val">"0"</span> <span class="t-attr">y</span>=<span class="t-val">"0"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;costume</span> <span class="t-attr">type</span>=<span class="t-val">"circle"</span> <span class="t-attr">color</span>=<span class="t-val">"#ffff00"</span> <span class="t-attr">size</span>=<span class="t-val">"10"</span><span class="t-tag">/&gt;</span>
+    <span class="t-tag">&lt;blocks&gt;</span>
+      <span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"40"</span> <span class="t-attr">y</span>=<span class="t-val">"40"</span><span class="t-tag">&gt;</span>
+          <span class="t-tag">&lt;next&gt;</span>
+            <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"looks_hide"</span><span class="t-tag">/&gt;</span>
+          <span class="t-tag">&lt;/next&gt;</span>
+        <span class="t-tag">&lt;/block&gt;</span>
+      <span class="t-tag">&lt;/xml&gt;</span>
+    <span class="t-tag">&lt;/blocks&gt;</span>
+  <span class="t-tag">&lt;/sprite&gt;</span>
+<span class="t-tag">&lt;/project&gt;</span></code></pre>
+        </div>
+      </div>
+
+      <!-- APPEND BLOCKS -->
+      <div class="doc-section" id="append-blocks">
+        <h2 class="section-title"><span class="num">03</span>Append Blocks</h2>
+        <p>The <span class="badge indigo">[+] Append Blocks</span> mode adds new block stacks to the active sprite <em>alongside</em> existing ones — nothing is deleted.</p>
+        <p>Use this when you want to add extra scripts (like a new event handler or a helper stack) without losing the blocks you already have.</p>
+
+        <div class="callout warn">
+          <div class="callout-icon">⚠</div>
+          <div>If you inject a stack with the same hat block (e.g. two <code>event_whenflagclicked</code>), Scratch will run both. This is intentional behaviour — the append mode does not deduplicate.</div>
+        </div>
+
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">XML — Append a new script to existing sprite</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-cm">&lt;!-- Mode: [+] Append Blocks
+     Adds this stack without removing any existing scripts --&gt;</span>
+<span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenkeypressed"</span> <span class="t-attr">x</span>=<span class="t-val">"300"</span> <span class="t-attr">y</span>=<span class="t-val">"40"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>r<span class="t-tag">&lt;/field&gt;</span>
+    <span class="t-tag">&lt;next&gt;</span>
+      <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_gotoxy"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"X"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>0<span class="t-tag">&lt;/field&gt;</span><span class="t-tag">&lt;/shadow&gt;</span><span class="t-tag">&lt;/value&gt;</span>
+        <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"Y"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>0<span class="t-tag">&lt;/field&gt;</span><span class="t-tag">&lt;/shadow&gt;</span><span class="t-tag">&lt;/value&gt;</span>
+      <span class="t-tag">&lt;/block&gt;</span>
+    <span class="t-tag">&lt;/next&gt;</span>
+  <span class="t-tag">&lt;/block&gt;</span>
+<span class="t-tag">&lt;/xml&gt;</span></code></pre>
+        </div>
+      </div>
+
+      <!-- EXPORT PROJECT XML -->
+      <div class="doc-section" id="export-project">
+        <h2 class="section-title"><span class="num">04</span>Export Full Project XML</h2>
+        <p>The Export tab now has two buttons:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Button</th><th>Output</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>Grab Sprite XML</code></td>
+                <td>The active sprite's Blockly blocks as a standard <code>&lt;xml&gt;</code> document. Same as v6.3.</td>
+              </tr>
+              <tr>
+                <td><code>Grab Project XML</code></td>
+                <td>The entire project serialised as a <code>&lt;project&gt;</code> document — all sprites and their block scripts. Can be re-injected directly with <strong>[+] Add to Project</strong> or <strong>[#] New Project</strong>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The Project XML exporter converts the live sb3 JSON block format back into readable Blockly XML, so you can save a project's XML state and re-inject it later — even on a different project.</p>
+
+        <div class="callout info">
+          <div class="callout-icon">ℹ</div>
+          <div>Exported Project XML includes <code>&lt;!-- costume: ... --&gt;</code> comments for each costume since the PNG data can't be round-tripped into shape attributes. To re-inject with correct costumes, add <code>&lt;costume type="..."&gt;</code> elements manually using the <a href="costumes.html">Costume Shapes guide</a>.</div>
+        </div>
+      </div>
+
+      <!-- COPY SCRIPT TAB -->
+      <div class="doc-section" id="copy-script">
+        <h2 class="section-title"><span class="num">05</span>Copy Script Tab</h2>
+        <p>A new <code>&lt;/&gt; Script</code> tab in the panel lets you copy the injector's own userscript source code directly to your clipboard — no need to navigate back to Tampermonkey's dashboard.</p>
+        <p>When running as a Tampermonkey userscript, the tab shows instructions for how to access and copy the source from the Tampermonkey editor, since browser security prevents scripts from reading their own injected source. See the <a href="copy-script.html">Copy Script guide</a> for full details.</p>
+      </div>
+
+      <!-- MIGRATION -->
+      <div class="doc-section" id="migration">
+        <h2 class="section-title"><span class="num">06</span>Migrating from v6.3</h2>
+        <p>v7.0 is a drop-in replacement. All v6.3 XML (both <code>&lt;xml&gt;</code> and <code>&lt;project&gt;</code> formats) continues to work without any changes.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>v6.3 behaviour</th><th>v7.0 equivalent</th></tr></thead>
+            <tbody>
+              <tr><td><em>~ Blocks XML</em> mode → Inject</td><td><span class="badge yellow">~ Replace Blocks</span> mode</td></tr>
+              <tr><td><em>[#] Project XML</em> mode → Build Project</td><td><span class="badge red">[#] New Project</span> mode</td></tr>
+              <tr><td>Export → Grab XML (sprite only)</td><td>Export → <strong>Grab Sprite XML</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>To install v7.0, open Tampermonkey Dashboard → click the script name → Edit → select all → paste the new source → save.</p>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">Scratch XML Injector · v7.0</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn next" href="inject-modes.html"><span class="nav-label">Next</span><span class="nav-title">Inject Modes</span></a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+<script src="../assets/js/wiki.js"></script>
+</body>
+</html>

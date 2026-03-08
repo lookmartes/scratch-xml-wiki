@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Getting Started — Scratch XML Injector Docs</title>
+  <meta name="description" content="Install and set up the Scratch XML Injector userscript in your browser."/>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+
+<header class="topbar">
+  <a class="topbar-logo" href="../index.html">
+    <div class="logo-mark">S</div>
+    <span class="logo-name">SXI <span class="logo-sub">Docs</span></span>
+  </a>
+  <nav class="topbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html" class="active">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html">Opcodes</a>
+    <a href="examples.html">Examples</a>
+  </nav>
+  <div class="topbar-right">
+    <span class="topbar-badge">v6.3</span>
+    <a class="topbar-github" href="https://scratch.mit.edu" target="_blank">↗ Scratch</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link active" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+
+  <div class="content-wrap">
+    <main class="content">
+
+      <div class="page-header">
+        <div class="breadcrumb">
+          <a href="../index.html">docs</a>
+          <span class="sep">/</span>
+          <span>getting-started</span>
+        </div>
+        <h1>Getting Started</h1>
+        <p class="lead">Install the Scratch XML Injector userscript and run your first block injection in under five minutes.</p>
+        <div class="meta">
+          <span class="meta-tag green">Beginner</span>
+          <span class="meta-tag blue">~5 min read</span>
+        </div>
+      </div>
+
+      <!-- INSTALLATION -->
+      <div class="doc-section" id="installation">
+        <h2 class="section-title"><span class="num">01</span>Installation</h2>
+        <p>The injector runs as a <strong>userscript</strong> — a small piece of JavaScript that your browser executes on specific pages. You need a userscript manager to load it.</p>
+
+        <h3 class="sub-title">Step 1 — Install a userscript manager</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">A</div>
+            <div class="step-body">
+              <h4>Tampermonkey (recommended)</h4>
+              <p>Available for Chrome, Edge, Firefox, Safari. Install from your browser's extension store by searching <strong>Tampermonkey</strong>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">B</div>
+            <div class="step-body">
+              <h4>Violentmonkey (alternative)</h4>
+              <p>Open-source alternative with the same compatibility. Works identically for this script.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="sub-title">Step 2 — Create the script</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Open Tampermonkey Dashboard</h4>
+              <p>Click the Tampermonkey icon in your browser toolbar → <strong>Dashboard</strong>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Create a new script</h4>
+              <p>Click the <strong>+</strong> tab at the top of the dashboard to open the script editor.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Paste the injector code</h4>
+              <p>Delete everything in the editor. Paste the full <code>Scratch XML Injector</code> script. Save with <kbd>Ctrl+S</kbd> (or <kbd>Cmd+S</kbd> on Mac).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout info">
+          <div class="callout-icon">ℹ</div>
+          <div>The script's <code>@match</code> header already covers <code>scratch.mit.edu/projects/*</code> and <code>turbowarp.org/*</code> — no extra configuration needed.</div>
+        </div>
+      </div>
+
+      <!-- RUNNING THE SCRIPT -->
+      <div class="doc-section" id="running">
+        <h2 class="section-title"><span class="num">02</span>Running the Script</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Open a project in the editor</h4>
+              <p>Go to <code>scratch.mit.edu/projects/&lt;id&gt;</code> and click <strong>See inside</strong>, or open any project on TurboWarp.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Run the script</h4>
+              <p>Click the Tampermonkey icon → find <strong>Scratch XML Injector</strong> → click it. The panel appears in the top-right corner.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Toggle the panel</h4>
+              <p>Running the script again while the panel is open will <em>close</em> it. This is by design — it acts as a toggle.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- THE PANEL -->
+      <div class="doc-section" id="panel">
+        <h2 class="section-title"><span class="num">03</span>The Injector Panel</h2>
+        <p>The panel has three tabs:</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tab</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td><code>~&gt; Inject</code></td><td>Paste XML and inject it into Scratch. Supports both Blocks XML and Project XML modes.</td></tr>
+              <tr><td><code>[cp] Export</code></td><td>Read the current sprite's blocks as Blockly XML and copy to clipboard.</td></tr>
+              <tr><td><code>? Syntax</code></td><td>Quick in-panel reference for Project XML syntax.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="sub-title">Mode toggle</h3>
+        <p>Within the Inject tab, two mode buttons switch the injector's behaviour:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Mode</th><th>Input</th><th>Effect</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="badge indigo">Blocks XML</span></td>
+                <td><code>&lt;xml&gt; … &lt;/xml&gt;</code></td>
+                <td>Replaces the active sprite's block workspace. Non-destructive to other sprites.</td>
+              </tr>
+              <tr>
+                <td><span class="badge yellow">Project XML</span></td>
+                <td><code>&lt;project&gt; … &lt;/project&gt;</code></td>
+                <td>Wipes the entire project and rebuilds it from scratch. <strong>Irreversible.</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout warn">
+          <div class="callout-icon">⚠</div>
+          <div><strong>Always save first.</strong> Project XML mode deletes all existing sprites and cannot be undone. Use File → Save to your computer before building a project.</div>
+        </div>
+      </div>
+
+      <!-- FIRST INJECTION -->
+      <div class="doc-section" id="first-injection">
+        <h2 class="section-title"><span class="num">04</span>Your First Injection</h2>
+        <p>Try this minimal example to confirm everything is working:</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Open a Scratch project in the editor</h4>
+              <p>Any project works — even a blank one.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Select a sprite</h4>
+              <p>Click on Scratch's Sprite 1 (or any sprite) in the sprite list so it's the active editing target.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Open the panel and click "! Example"</h4>
+              <p>The example blocks XML is pre-loaded. Make sure the mode is set to <strong>~ Blocks XML</strong>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Click "~&gt; Inject"</h4>
+              <p>The blocks appear in the workspace. Press the green flag — the sprite should spin and move.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout success">
+          <div class="callout-icon">✓</div>
+          <div>If blocks appear in the workspace, the injector is working correctly. You're ready to write your own XML.</div>
+        </div>
+
+        <h3 class="sub-title">Next steps</h3>
+        <p>Now that you have the injector running, learn the XML format:</p>
+        <div class="card-grid">
+          <a class="card" href="blocks-xml.html">
+            <div class="card-icon">~</div>
+            <div class="card-title">Blocks XML format</div>
+            <div class="card-desc">The complete guide to writing Blockly XML for Scratch.</div>
+            <div class="card-arrow">→ Learn more</div>
+          </a>
+          <a class="card" href="opcodes.html">
+            <div class="card-icon">≡</div>
+            <div class="card-title">Opcode reference</div>
+            <div class="card-desc">Every block's type string and input names.</div>
+            <div class="card-arrow">→ View reference</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">Last updated · v6.3</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn prev" href="../index.html">
+            <span class="nav-label">Previous</span>
+            <span class="nav-title">Introduction</span>
+          </a>
+          <a class="doc-nav-btn next" href="blocks-xml.html">
+            <span class="nav-label">Next</span>
+            <span class="nav-title">Blocks XML</span>
+          </a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../assets/js/wiki.js"></script>
+</body>
+</html>

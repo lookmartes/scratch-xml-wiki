@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Copy Script — Scratch XML Injector Docs</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+<header class="topbar">
+  <a class="topbar-logo" href="../index.html"><div class="logo-mark">S</div><span class="logo-name">SXI <span class="logo-sub">Docs</span></span></a>
+  <nav class="topbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html">Opcodes</a>
+    <a href="examples.html">Examples</a>
+  </nav>
+  <div class="topbar-right"><span class="topbar-badge">v7.0</span></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link" href="whats-new.html"><span class="icon">★</span>What's New in v7.0</a>
+    <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link" href="inject-modes.html"><span class="icon">⇒</span>Inject Modes</a>
+    <a class="sidebar-link" href="export-modes.html"><span class="icon">↑</span>Export Modes</a>
+    <a class="sidebar-link active" href="copy-script.html"><span class="icon">&lt;/&gt;</span>Copy Script</a>
+    <a class="sidebar-link" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+  <div class="content-wrap">
+    <main class="content">
+
+      <div class="page-header">
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>copy-script</span></div>
+        <h1>Copy Script</h1>
+        <p class="lead">The <code>&lt;/&gt; Script</code> tab lets you access and copy the injector's userscript source code without leaving the Scratch editor.</p>
+        <div class="meta"><span class="meta-tag indigo">v7.0</span></div>
+      </div>
+
+      <div class="doc-section" id="what-it-does">
+        <h2 class="section-title"><span class="num">01</span>What the Script Tab Does</h2>
+        <p>The <code>&lt;/&gt; Script</code> tab is a quick-access panel for the injector's own source code. It's useful when:</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">A</div>
+            <div class="step-body">
+              <h4>Sharing the script</h4>
+              <p>You want to copy and send the script to a friend without going to the Tampermonkey dashboard.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">B</div>
+            <div class="step-body">
+              <h4>Installing on another browser</h4>
+              <p>You're on a different computer and want to install the script quickly.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">C</div>
+            <div class="step-body">
+              <h4>Verifying the version</h4>
+              <p>You want to check which version of the script is currently running.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="how-to-copy">
+        <h2 class="section-title"><span class="num">02</span>How to Copy the Script</h2>
+
+        <h3 class="sub-title">Method A — From the Script tab (fastest)</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Open the &lt;/&gt; Script tab</h4>
+              <p>Click the <code>&lt;/&gt; Script</code> tab in the injector panel.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Click "[cp] Copy Script"</h4>
+              <p>The script source or instructions are copied to your clipboard automatically.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Or click "Select All" then Ctrl+C</h4>
+              <p>This selects the entire text in the box, which you can then copy manually with <kbd>Ctrl+C</kbd>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout info">
+          <div class="callout-icon">ℹ</div>
+          <div>When the injector runs as a <strong>Tampermonkey userscript</strong>, browser security prevents the page from reading the script's own injected source code directly. In this case, the Script tab shows instructions pointing you to the Tampermonkey dashboard instead.</div>
+        </div>
+
+        <h3 class="sub-title">Method B — From Tampermonkey Dashboard (always works)</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Click the Tampermonkey icon</h4>
+              <p>In your browser toolbar, click the Tampermonkey icon (the black and white circle).</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Open Dashboard</h4>
+              <p>Click <strong>Dashboard</strong> from the dropdown menu.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Find the script and click Edit</h4>
+              <p>Find <strong>Scratch XML Injector</strong> in the list. Click the pencil (edit) icon.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Select All and Copy</h4>
+              <p>Click inside the editor, press <kbd>Ctrl+A</kbd> to select all, then <kbd>Ctrl+C</kbd> to copy.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="sub-title">Method C — From this wiki</h3>
+        <p>The v7.0 script file is included in the wiki's GitHub repository as <code>scratch-xml-injector.user.js</code>. If you're hosting this wiki on GitHub Pages, you can find the raw file at:</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">URL</span></div>
+          <pre><code>https://YOUR-USERNAME.github.io/scratch-xml-wiki/scratch-xml-injector.user.js</code></pre>
+        </div>
+        <p>Or from the GitHub repo directly:</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">URL</span></div>
+          <pre><code>https://raw.githubusercontent.com/YOUR-USERNAME/scratch-xml-wiki/main/scratch-xml-injector.user.js</code></pre>
+        </div>
+        <p>Tampermonkey can install scripts directly from raw URLs — just visit the URL and Tampermonkey will prompt you to install.</p>
+      </div>
+
+      <div class="doc-section" id="installing">
+        <h2 class="section-title"><span class="num">03</span>Installing the Script from Copied Source</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Open Tampermonkey Dashboard</h4>
+              <p>Click the Tampermonkey icon → <strong>Dashboard</strong>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Create a new script</h4>
+              <p>Click the <strong>+</strong> tab at the top of the Dashboard.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Delete the default content</h4>
+              <p>Select all (<kbd>Ctrl+A</kbd>) and delete the placeholder code.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Paste and save</h4>
+              <p>Paste the copied script (<kbd>Ctrl+V</kbd>), then save with <kbd>Ctrl+S</kbd>. The script is now active.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout success">
+          <div class="callout-icon">✓</div>
+          <div>To <strong>update</strong> an existing installation, open the edit view for the old script, select all, paste the new source, and save. The old script is replaced in-place.</div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">Last updated · v7.0</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn prev" href="export-modes.html"><span class="nav-label">Previous</span><span class="nav-title">Export Modes</span></a>
+          <a class="doc-nav-btn next" href="examples.html"><span class="nav-label">Next</span><span class="nav-title">Examples</span></a>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/wiki.js"></script>
+</body>
+</html>

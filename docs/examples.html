@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Examples — Scratch XML Injector Docs</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+<header class="topbar">
+  <a class="topbar-logo" href="../index.html"><div class="logo-mark">S</div><span class="logo-name">SXI <span class="logo-sub">Docs</span></span></a>
+  <nav class="topbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html">Opcodes</a>
+    <a href="examples.html" class="active">Examples</a>
+  </nav>
+  <div class="topbar-right"><span class="topbar-badge">v6.3</span></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link active" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+  <div class="content-wrap">
+    <main class="content">
+
+      <div class="page-header">
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>examples</span></div>
+        <h1>Examples</h1>
+        <p class="lead">Copy-pasteable XML snippets and full project templates. Each example is ready to paste directly into the injector panel.</p>
+        <div class="meta"><span class="meta-tag blue">Copy &amp; paste</span></div>
+      </div>
+
+      <!-- EXAMPLE 1 -->
+      <div class="doc-section" id="basic-movement">
+        <h2 class="section-title"><span class="num">01</span>Basic Movement</h2>
+        <p>A sprite that turns 5° and moves 3 steps every frame, bouncing at edges. Paste in <strong>Blocks XML</strong> mode.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">Blocks XML</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"60"</span> <span class="t-attr">y</span>=<span class="t-val">"60"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;next&gt;</span>
+      <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_forever"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+          <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_turnright"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DEGREES"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>5<span class="t-tag">&lt;/field&gt;</span>
+              <span class="t-tag">&lt;/shadow&gt;</span>
+            <span class="t-tag">&lt;/value&gt;</span>
+            <span class="t-tag">&lt;next&gt;</span>
+              <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_movesteps"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"STEPS"</span><span class="t-tag">&gt;</span>
+                  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span>
+                    <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>3<span class="t-tag">&lt;/field&gt;</span>
+                  <span class="t-tag">&lt;/shadow&gt;</span>
+                <span class="t-tag">&lt;/value&gt;</span>
+                <span class="t-tag">&lt;next&gt;</span>
+                  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_ifonedgebounce"</span><span class="t-tag">/&gt;</span>
+                <span class="t-tag">&lt;/next&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/next&gt;</span>
+          <span class="t-tag">&lt;/block&gt;</span>
+        <span class="t-tag">&lt;/statement&gt;</span>
+      <span class="t-tag">&lt;/block&gt;</span>
+    <span class="t-tag">&lt;/next&gt;</span>
+  <span class="t-tag">&lt;/block&gt;</span>
+<span class="t-tag">&lt;/xml&gt;</span></code></pre>
+        </div>
+      </div>
+
+      <!-- EXAMPLE 2 -->
+      <div class="doc-section" id="arrow-keys">
+        <h2 class="section-title"><span class="num">02</span>Arrow Key Movement</h2>
+        <p>Four-directional movement using arrow keys. Paste in <strong>Blocks XML</strong> mode.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">Blocks XML</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"60"</span> <span class="t-attr">y</span>=<span class="t-val">"60"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;next&gt;</span>
+      <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_forever"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+
+          <span class="t-cm">&lt;!-- Right --&gt;</span>
+          <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_if"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"CONDITION"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keypressed"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>
+                  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keyoptions"</span><span class="t-tag">&gt;</span>
+                    <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>right arrow<span class="t-tag">&lt;/field&gt;</span>
+                  <span class="t-tag">&lt;/shadow&gt;</span>
+                <span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/value&gt;</span>
+            <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_changexby"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DX"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>5<span class="t-tag">&lt;/field&gt;</span><span class="t-tag">&lt;/shadow&gt;</span><span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/statement&gt;</span>
+            <span class="t-tag">&lt;next&gt;</span>
+
+          <span class="t-cm">&lt;!-- Left --&gt;</span>
+          <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_if"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"CONDITION"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keypressed"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>
+                  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keyoptions"</span><span class="t-tag">&gt;</span>
+                    <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>left arrow<span class="t-tag">&lt;/field&gt;</span>
+                  <span class="t-tag">&lt;/shadow&gt;</span>
+                <span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/value&gt;</span>
+            <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_changexby"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DX"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>-5<span class="t-tag">&lt;/field&gt;</span><span class="t-tag">&lt;/shadow&gt;</span><span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/statement&gt;</span>
+            <span class="t-tag">&lt;next&gt;</span>
+
+          <span class="t-cm">&lt;!-- Up --&gt;</span>
+          <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_if"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"CONDITION"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keypressed"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>
+                  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keyoptions"</span><span class="t-tag">&gt;</span>
+                    <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>up arrow<span class="t-tag">&lt;/field&gt;</span>
+                  <span class="t-tag">&lt;/shadow&gt;</span>
+                <span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/value&gt;</span>
+            <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_changeyby"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DY"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>5<span class="t-tag">&lt;/field&gt;</span><span class="t-tag">&lt;/shadow&gt;</span><span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/statement&gt;</span>
+            <span class="t-tag">&lt;next&gt;</span>
+
+          <span class="t-cm">&lt;!-- Down --&gt;</span>
+          <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_if"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"CONDITION"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keypressed"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>
+                  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keyoptions"</span><span class="t-tag">&gt;</span>
+                    <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>down arrow<span class="t-tag">&lt;/field&gt;</span>
+                  <span class="t-tag">&lt;/shadow&gt;</span>
+                <span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/value&gt;</span>
+            <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_changeyby"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DY"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>-5<span class="t-tag">&lt;/field&gt;</span><span class="t-tag">&lt;/shadow&gt;</span><span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/statement&gt;</span>
+          <span class="t-tag">&lt;/block&gt;</span>
+
+            <span class="t-tag">&lt;/next&gt;</span><span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/next&gt;</span><span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/next&gt;</span><span class="t-tag">&lt;/block&gt;</span>
+
+        <span class="t-tag">&lt;/statement&gt;</span>
+      <span class="t-tag">&lt;/block&gt;</span>
+    <span class="t-tag">&lt;/next&gt;</span>
+  <span class="t-tag">&lt;/block&gt;</span>
+<span class="t-tag">&lt;/xml&gt;</span></code></pre>
+        </div>
+      </div>
+
+      <!-- EXAMPLE 3 -->
+      <div class="doc-section" id="full-project">
+        <h2 class="section-title"><span class="num">03</span>Full Project — Player &amp; Enemy</h2>
+        <p>A complete <strong>Project XML</strong> example with two sprites: a blue player controlled by arrow keys, and a red enemy that bounces around the stage.</p>
+        <div class="callout warn">
+          <div class="callout-icon">⚠</div>
+          <div>Paste this in <strong>Project XML</strong> mode. It will wipe your current project.</div>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">Project XML</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-tag">&lt;project&gt;</span>
+  <span class="t-tag">&lt;stage</span> <span class="t-attr">color</span>=<span class="t-val">"#0a0a1a"</span><span class="t-tag">/&gt;</span>
+
+  <span class="t-tag">&lt;sprite</span> <span class="t-attr">name</span>=<span class="t-val">"Player"</span> <span class="t-attr">x</span>=<span class="t-val">"0"</span> <span class="t-attr">y</span>=<span class="t-val">"-100"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;costume</span> <span class="t-attr">name</span>=<span class="t-val">"player"</span> <span class="t-attr">type</span>=<span class="t-val">"circle"</span>
+             <span class="t-attr">color</span>=<span class="t-val">"#4c8fff"</span> <span class="t-attr">stroke</span>=<span class="t-val">"#88bbff"</span>
+             <span class="t-attr">stroke-width</span>=<span class="t-val">"3"</span> <span class="t-attr">size</span>=<span class="t-val">"40"</span><span class="t-tag">/&gt;</span>
+    <span class="t-tag">&lt;blocks&gt;</span>
+      <span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"40"</span> <span class="t-attr">y</span>=<span class="t-val">"40"</span><span class="t-tag">&gt;</span>
+          <span class="t-tag">&lt;next&gt;</span><span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_forever"</span><span class="t-tag">&gt;</span>
+          <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_ifonedgebounce"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;next&gt;</span>
+            <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_if"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"CONDITION"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keypressed"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keyoptions"</span><span class="t-tag">&gt;</span>
+                  <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>right arrow<span class="t-tag">&lt;/field&gt;</span>
+                <span class="t-tag">&lt;/shadow&gt;</span><span class="t-tag">&lt;/value&gt;</span><span class="t-tag">&lt;/block&gt;</span><span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_changexby"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DX"</span><span class="t-tag">&gt;</span>
+                  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>5<span class="t-tag">&lt;/field&gt;</span><span class="t-tag">&lt;/shadow&gt;</span>
+                <span class="t-tag">&lt;/value&gt;</span><span class="t-tag">&lt;/block&gt;</span>
+              <span class="t-tag">&lt;/statement&gt;</span><span class="t-tag">&lt;next&gt;</span>
+            <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_if"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"CONDITION"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keypressed"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"sensing_keyoptions"</span><span class="t-tag">&gt;</span>
+                  <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"KEY_OPTION"</span><span class="t-tag">&gt;</span>left arrow<span class="t-tag">&lt;/field&gt;</span>
+                <span class="t-tag">&lt;/shadow&gt;</span><span class="t-tag">&lt;/value&gt;</span><span class="t-tag">&lt;/block&gt;</span><span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_changexby"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DX"</span><span class="t-tag">&gt;</span>
+                  <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>-5<span class="t-tag">&lt;/field&gt;</span><span class="t-tag">&lt;/shadow&gt;</span>
+                <span class="t-tag">&lt;/value&gt;</span><span class="t-tag">&lt;/block&gt;</span>
+              <span class="t-tag">&lt;/statement&gt;</span>
+            <span class="t-tag">&lt;/block&gt;</span><span class="t-tag">&lt;/next&gt;</span><span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/next&gt;</span><span class="t-tag">&lt;/block&gt;</span>
+          <span class="t-tag">&lt;/statement&gt;</span>
+          <span class="t-tag">&lt;/block&gt;</span><span class="t-tag">&lt;/next&gt;</span>
+        <span class="t-tag">&lt;/block&gt;</span>
+      <span class="t-tag">&lt;/xml&gt;</span>
+    <span class="t-tag">&lt;/blocks&gt;</span>
+  <span class="t-tag">&lt;/sprite&gt;</span>
+
+  <span class="t-tag">&lt;sprite</span> <span class="t-attr">name</span>=<span class="t-val">"Enemy"</span> <span class="t-attr">x</span>=<span class="t-val">"80"</span> <span class="t-attr">y</span>=<span class="t-val">"60"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;costume</span> <span class="t-attr">name</span>=<span class="t-val">"enemy"</span> <span class="t-attr">type</span>=<span class="t-val">"rectangle"</span>
+             <span class="t-attr">color</span>=<span class="t-val">"#ff4455"</span> <span class="t-attr">width</span>=<span class="t-val">"50"</span>
+             <span class="t-attr">height</span>=<span class="t-val">"50"</span> <span class="t-attr">radius</span>=<span class="t-val">"8"</span><span class="t-tag">/&gt;</span>
+    <span class="t-tag">&lt;blocks&gt;</span>
+      <span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"40"</span> <span class="t-attr">y</span>=<span class="t-val">"40"</span><span class="t-tag">&gt;</span>
+          <span class="t-tag">&lt;next&gt;</span><span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_forever"</span><span class="t-tag">&gt;</span>
+          <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_turnright"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DEGREES"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>3<span class="t-tag">&lt;/field&gt;</span><span class="t-tag">&lt;/shadow&gt;</span><span class="t-tag">&lt;/value&gt;</span>
+              <span class="t-tag">&lt;next&gt;</span><span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_movesteps"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"STEPS"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span><span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>2<span class="t-tag">&lt;/field&gt;</span><span class="t-tag">&lt;/shadow&gt;</span><span class="t-tag">&lt;/value&gt;</span>
+                <span class="t-tag">&lt;next&gt;</span><span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_ifonedgebounce"</span><span class="t-tag">/&gt;</span><span class="t-tag">&lt;/next&gt;</span>
+              <span class="t-tag">&lt;/block&gt;</span><span class="t-tag">&lt;/next&gt;</span><span class="t-tag">&lt;/block&gt;</span>
+            <span class="t-tag">&lt;/statement&gt;</span>
+          <span class="t-tag">&lt;/block&gt;</span><span class="t-tag">&lt;/next&gt;</span>
+        <span class="t-tag">&lt;/block&gt;</span>
+      <span class="t-tag">&lt;/xml&gt;</span>
+    <span class="t-tag">&lt;/blocks&gt;</span>
+  <span class="t-tag">&lt;/sprite&gt;</span>
+
+<span class="t-tag">&lt;/project&gt;</span></code></pre>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">Last updated · v6.3</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn prev" href="costumes.html"><span class="nav-label">Previous</span><span class="nav-title">Costume Shapes</span></a>
+          <a class="doc-nav-btn next" href="troubleshooting.html"><span class="nav-label">Next</span><span class="nav-title">Troubleshooting</span></a>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/wiki.js"></script>
+</body>
+</html>

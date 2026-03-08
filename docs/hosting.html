@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Hosting on GitHub — Scratch XML Injector Docs</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+<header class="topbar">
+  <a class="topbar-logo" href="../index.html"><div class="logo-mark">S</div><span class="logo-name">SXI <span class="logo-sub">Docs</span></span></a>
+  <nav class="topbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html">Opcodes</a>
+    <a href="examples.html">Examples</a>
+  </nav>
+  <div class="topbar-right"><span class="topbar-badge">v6.3</span></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link active" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+  <div class="content-wrap">
+    <main class="content">
+
+      <div class="page-header">
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>hosting</span></div>
+        <h1>Hosting on GitHub Pages</h1>
+        <p class="lead">Deploy this wiki for free using GitHub Pages — no servers, no build tools, no cost.</p>
+        <div class="meta">
+          <span class="meta-tag green">Free</span>
+          <span class="meta-tag blue">~10 min setup</span>
+        </div>
+      </div>
+
+      <div class="doc-section" id="file-structure">
+        <h2 class="section-title"><span class="num">01</span>File Structure</h2>
+        <p>The wiki is a self-contained static site. Here's the directory layout you'll upload:</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">File tree</span><button class="copy-btn">Copy</button></div>
+          <pre><code>scratch-xml-wiki/
+├── index.html                  ← Landing / home page
+├── assets/
+│   ├── css/
+│   │   └── main.css            ← Shared styles
+│   └── js/
+│       └── wiki.js             ← Shared scripts
+└── docs/
+    ├── getting-started.html
+    ├── blocks-xml.html
+    ├── opcodes.html
+    ├── inputs-fields.html
+    ├── project-xml.html
+    ├── costumes.html
+    ├── examples.html
+    ├── troubleshooting.html
+    └── hosting.html            ← This page</code></pre>
+        </div>
+        <p>All paths are <strong>relative</strong> — the site works from any subfolder or custom domain without modification.</p>
+      </div>
+
+      <div class="doc-section" id="github-ui">
+        <h2 class="section-title"><span class="num">02</span>Deploy via GitHub Web UI</h2>
+        <p>The easiest method — no Git knowledge required.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Create a GitHub account</h4>
+              <p>Go to <a href="https://github.com" target="_blank">github.com</a> and sign up for a free account if you don't have one.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Create a new repository</h4>
+              <p>Click the <strong>+</strong> icon (top right) → <strong>New repository</strong>. Name it <code>scratch-xml-wiki</code>. Set visibility to <strong>Public</strong>. Leave everything else as default. Click <strong>Create repository</strong>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Upload files</h4>
+              <p>Click <strong>Add file → Upload files</strong>. Drag the entire wiki folder structure into the upload area. GitHub preserves the folder structure automatically. Write a commit message (e.g. "initial wiki upload") and click <strong>Commit changes</strong>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Enable GitHub Pages</h4>
+              <p>In your repository, go to <strong>Settings → Pages</strong>. Under <em>Build and deployment → Source</em>, select <strong>Deploy from a branch</strong>. Set Branch to <strong>main</strong>, folder to <strong>/ (root)</strong>. Click <strong>Save</strong>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <h4>Wait ~60 seconds, then visit your site</h4>
+              <p>GitHub will show a banner with your URL once it's ready. Your wiki will be live at:</p>
+              <div class="code-block" style="margin-top:10px">
+                <div class="code-block-header"><span class="code-block-lang">URL</span></div>
+                <pre><code>https://YOUR-USERNAME.github.io/scratch-xml-wiki/</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="callout success">
+          <div class="callout-icon">✓</div>
+          <div>Once deployed, any update you push to the <code>main</code> branch goes live within ~30–60 seconds automatically. No re-configuration needed.</div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="git-cli">
+        <h2 class="section-title"><span class="num">03</span>Deploy via Git CLI</h2>
+        <p>Faster for ongoing updates once Git is installed on your machine.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">Bash</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-cm"># 1. Clone your newly created (empty) repository</span>
+git clone https://github.com/YOUR-USERNAME/scratch-xml-wiki.git
+cd scratch-xml-wiki
+
+<span class="t-cm"># 2. Copy all wiki files into the folder
+#    (index.html, assets/, docs/) then commit and push</span>
+git add .
+git commit -m "initial wiki upload"
+git push origin main
+
+<span class="t-cm"># For subsequent updates:</span>
+git add .
+git commit -m "update opcodes table"
+git push</code></pre>
+        </div>
+      </div>
+
+      <div class="doc-section" id="custom-domain">
+        <h2 class="section-title"><span class="num">04</span>Custom Domain (Optional)</h2>
+        <p>If you own a domain (e.g. <code>mysite.com</code>), you can point it at your GitHub Pages site.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Add a CNAME file</h4>
+              <p>Create a file named exactly <code>CNAME</code> (no extension) in the root of the repository. Its only content should be your domain:</p>
+              <div class="code-block" style="margin-top:8px"><div class="code-block-header"><span class="code-block-lang">CNAME</span><button class="copy-btn">Copy</button></div><pre><code>wiki.mysite.com</code></pre></div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Update your DNS</h4>
+              <p>In your domain registrar's DNS settings, add a <code>CNAME</code> record pointing <code>wiki.mysite.com</code> → <code>YOUR-USERNAME.github.io</code>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Enable in GitHub Pages settings</h4>
+              <p>In <strong>Settings → Pages → Custom domain</strong>, enter your domain. GitHub will issue a free TLS certificate automatically within a few minutes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="tips">
+        <h2 class="section-title"><span class="num">05</span>Tips</h2>
+        <div class="callout info">
+          <div class="callout-icon">ℹ</div>
+          <div><strong>No build step required.</strong> This wiki is plain HTML, CSS, and JS — GitHub Pages serves it directly. You don't need Node, npm, Jekyll, or any other tooling.</div>
+        </div>
+        <div class="callout info">
+          <div class="callout-icon">ℹ</div>
+          <div><strong>Private repos require GitHub Pro</strong> for Pages. If you want to keep the source private but host publicly, you'll need a paid plan. Public repos get Pages for free on any plan.</div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">Last updated · v6.3</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn prev" href="troubleshooting.html"><span class="nav-label">Previous</span><span class="nav-title">Troubleshooting</span></a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+<script src="../assets/js/wiki.js"></script>
+</body>
+</html>

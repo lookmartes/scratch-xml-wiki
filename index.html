@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Scratch XML Injector — Documentation</title>
+  <meta name="description" content="Official documentation for the Scratch XML Injector userscript. Learn how to write Blockly XML and Project XML to inject sprites, costumes, and scripts into Scratch."/>
+  <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <a class="topbar-logo" href="index.html">
+    <div class="logo-mark">S</div>
+    <span class="logo-name">SXI <span class="logo-sub">Docs</span></span>
+  </a>
+  <nav class="topbar-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="docs/getting-started.html">Guide</a>
+    <a href="docs/blocks-xml.html">Blocks XML</a>
+    <a href="docs/project-xml.html">Project XML</a>
+    <a href="docs/opcodes.html">Opcodes</a>
+    <a href="docs/examples.html">Examples</a>
+  </nav>
+  <div class="topbar-right">
+    <span class="topbar-badge">v7.0</span>
+    <a class="topbar-github" href="https://scratch.mit.edu" target="_blank">↗ Scratch</a>
+  </div>
+</header>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link active" href="index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link" href="docs/whats-new.html"><span class="icon">★</span>What's New in v7.0</a>
+    <a class="sidebar-link" href="docs/getting-started.html"><span class="icon">↓</span>Getting Started</a>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="docs/blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="docs/opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="docs/inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="docs/project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link" href="docs/costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link" href="docs/inject-modes.html"><span class="icon">⇒</span>Inject Modes</a>
+    <a class="sidebar-link" href="docs/export-modes.html"><span class="icon">↑</span>Export Modes</a>
+    <a class="sidebar-link" href="docs/copy-script.html"><span class="icon">&lt;/&gt;</span>Copy Script</a>
+    <a class="sidebar-link" href="docs/examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="docs/troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="docs/hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="content-wrap">
+    <main class="content">
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-kicker">
+          <span class="dot"></span>
+          Scratch XML Injector · v6.3
+        </div>
+        <h1>
+          Inject code into<br>
+          <span class="accent">Scratch &amp; TurboWarp</span>
+        </h1>
+        <p>
+          A powerful browser userscript that lets you programmatically create sprites,
+          costumes, and block scripts using XML — without any drag-and-drop.
+        </p>
+        <div class="hero-btns">
+          <a class="btn-primary" href="docs/getting-started.html">Get started →</a>
+          <a class="btn-secondary" href="docs/blocks-xml.html">Browse the docs</a>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <div class="feature-title">Blocks XML</div>
+          <div class="feature-desc">Inject standard Blockly XML directly into the active sprite's workspace — any script, any complexity.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏗</div>
+          <div class="feature-title">Project XML</div>
+          <div class="feature-desc">Bootstrap entire projects from a single XML document — sprites, auto-rendered costumes, and scripts all at once.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📤</div>
+          <div class="feature-title">Export XML</div>
+          <div class="feature-desc">Read the current sprite's Blockly XML back out of Scratch to copy, edit, and reuse your blocks anywhere.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <div class="feature-title">Shape Costumes</div>
+          <div class="feature-desc">Auto-generate circle and rectangle costumes from simple XML attributes — no image files required.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <div class="feature-title">Non-ASCII Fix</div>
+          <div class="feature-desc">One-click stripping of non-ASCII characters that cause Scratch's internal asset validator to reject blocks.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">TurboWarp Ready</div>
+          <div class="feature-desc">Works on both <code>scratch.mit.edu</code> and <code>turbowarp.org</code> — same script, same XML.</div>
+        </div>
+      </div>
+
+      <!-- QUICK START -->
+      <h2 class="section-title">Quick Start</h2>
+      <div class="qs-wrap">
+        <div class="qs-tabs">
+          <button class="qs-tab active" data-tab="qs-blocks">Blocks XML</button>
+          <button class="qs-tab" data-tab="qs-project">Project XML</button>
+          <button class="qs-tab" data-tab="qs-export">Export</button>
+        </div>
+        <div id="qs-blocks" class="qs-pane active">
+          <pre><code><span class="t-cm">&lt;!-- Paste into the injector panel in "Blocks XML" mode --&gt;</span>
+<span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+
+  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"60"</span> <span class="t-attr">y</span>=<span class="t-val">"60"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;next&gt;</span>
+      <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"control_forever"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;statement</span> <span class="t-attr">name</span>=<span class="t-val">"SUBSTACK"</span><span class="t-tag">&gt;</span>
+          <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"motion_turnright"</span><span class="t-tag">&gt;</span>
+            <span class="t-tag">&lt;value</span> <span class="t-attr">name</span>=<span class="t-val">"DEGREES"</span><span class="t-tag">&gt;</span>
+              <span class="t-tag">&lt;shadow</span> <span class="t-attr">type</span>=<span class="t-val">"math_number"</span><span class="t-tag">&gt;</span>
+                <span class="t-tag">&lt;field</span> <span class="t-attr">name</span>=<span class="t-val">"NUM"</span><span class="t-tag">&gt;</span>5<span class="t-tag">&lt;/field&gt;</span>
+              <span class="t-tag">&lt;/shadow&gt;</span>
+            <span class="t-tag">&lt;/value&gt;</span>
+          <span class="t-tag">&lt;/block&gt;</span>
+        <span class="t-tag">&lt;/statement&gt;</span>
+      <span class="t-tag">&lt;/block&gt;</span>
+    <span class="t-tag">&lt;/next&gt;</span>
+  <span class="t-tag">&lt;/block&gt;</span>
+
+<span class="t-tag">&lt;/xml&gt;</span></code></pre>
+        </div>
+        <div id="qs-project" class="qs-pane">
+          <pre><code><span class="t-cm">&lt;!-- "Project XML" mode — creates sprites + costumes + blocks --&gt;</span>
+<span class="t-tag">&lt;project&gt;</span>
+  <span class="t-tag">&lt;stage</span> <span class="t-attr">color</span>=<span class="t-val">"#0a0a1a"</span><span class="t-tag">/&gt;</span>
+
+  <span class="t-tag">&lt;sprite</span> <span class="t-attr">name</span>=<span class="t-val">"Player"</span> <span class="t-attr">x</span>=<span class="t-val">"0"</span> <span class="t-attr">y</span>=<span class="t-val">"0"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;costume</span> <span class="t-attr">type</span>=<span class="t-val">"circle"</span> <span class="t-attr">color</span>=<span class="t-val">"#4c8fff"</span> <span class="t-attr">size</span>=<span class="t-val">"40"</span><span class="t-tag">/&gt;</span>
+    <span class="t-tag">&lt;blocks&gt;</span>
+      <span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+        <span class="t-cm">&lt;!-- block scripts here --&gt;</span>
+      <span class="t-tag">&lt;/xml&gt;</span>
+    <span class="t-tag">&lt;/blocks&gt;</span>
+  <span class="t-tag">&lt;/sprite&gt;</span>
+<span class="t-tag">&lt;/project&gt;</span></code></pre>
+        </div>
+        <div id="qs-export" class="qs-pane">
+          <pre><code><span class="t-cm">// Export tab → click "Grab XML" to read the current sprite's blocks
+// The XML output looks like this — you can edit it and re-inject it:</span>
+
+<span class="t-tag">&lt;xml</span> <span class="t-attr">xmlns</span>=<span class="t-val">"https://developers.google.com/blockly/xml"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;block</span> <span class="t-attr">type</span>=<span class="t-val">"event_whenflagclicked"</span> <span class="t-attr">x</span>=<span class="t-val">"40"</span> <span class="t-attr">y</span>=<span class="t-val">"40"</span><span class="t-tag">&gt;</span>
+    <span class="t-cm">&lt;!-- ... your existing blocks ... --&gt;</span>
+  <span class="t-tag">&lt;/block&gt;</span>
+<span class="t-tag">&lt;/xml&gt;</span>
+
+<span class="t-cm">// Then click "Copy" to get it in your clipboard.</span></code></pre>
+        </div>
+      </div>
+
+      <!-- DOC CARDS -->
+      <h2 class="section-title">Documentation</h2>
+      <div class="card-grid">
+        <a class="card" href="docs/whats-new.html">
+          <div class="card-icon">★</div>
+          <div class="card-title">What's New in v7.0</div>
+          <div class="card-desc">New inject modes, project export, append blocks, and copy script tab.</div>
+          <div class="card-arrow">→ See changes</div>
+        </a>
+        <a class="card" href="docs/getting-started.html">
+          <div class="card-icon">↓</div>
+          <div class="card-title">Getting Started</div>
+          <div class="card-desc">Install Tampermonkey, load the script, and run your first injection.</div>
+          <div class="card-arrow">→ Read guide</div>
+        </a>
+        <a class="card" href="docs/blocks-xml.html">
+          <div class="card-icon">~</div>
+          <div class="card-title">Blocks XML</div>
+          <div class="card-desc">Learn the Blockly XML format — blocks, inputs, shadows, fields, and statements.</div>
+          <div class="card-arrow">→ Read guide</div>
+        </a>
+        <a class="card" href="docs/opcodes.html">
+          <div class="card-icon">≡</div>
+          <div class="card-title">Opcode Reference</div>
+          <div class="card-desc">Every common Scratch opcode with its input and field names.</div>
+          <div class="card-arrow">→ View reference</div>
+        </a>
+        <a class="card" href="docs/project-xml.html">
+          <div class="card-icon">#</div>
+          <div class="card-title">Project XML</div>
+          <div class="card-desc">Build complete multi-sprite projects from a single XML document.</div>
+          <div class="card-arrow">→ Read guide</div>
+        </a>
+        <a class="card" href="docs/examples.html">
+          <div class="card-icon">▷</div>
+          <div class="card-title">Examples</div>
+          <div class="card-desc">Copy-pasteable examples: movement, conditions, full projects, and more.</div>
+          <div class="card-arrow">→ See examples</div>
+        </a>
+        <a class="card" href="docs/troubleshooting.html">
+          <div class="card-icon">!</div>
+          <div class="card-title">Troubleshooting</div>
+          <div class="card-desc">Fix common errors including VM not found, non-ASCII issues, and parse failures.</div>
+          <div class="card-arrow">→ Get help</div>
+        </a>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">
+          Scratch XML Injector · v7.0 · Unofficial community documentation<br>
+          <a href="https://scratch.mit.edu" target="_blank">Scratch</a> is a project of the MIT Media Lab.
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</div>
+
+<script src="assets/js/wiki.js"></script>
+</body>
+</html>

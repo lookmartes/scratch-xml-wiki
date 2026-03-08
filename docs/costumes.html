@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Costume Shapes — Scratch XML Injector Docs</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
+<div id="scroll-bar"></div>
+<header class="topbar">
+  <a class="topbar-logo" href="../index.html"><div class="logo-mark">S</div><span class="logo-name">SXI <span class="logo-sub">Docs</span></span></a>
+  <nav class="topbar-nav">
+    <a href="../index.html">Home</a>
+    <a href="getting-started.html">Guide</a>
+    <a href="blocks-xml.html">Blocks XML</a>
+    <a href="project-xml.html">Project XML</a>
+    <a href="opcodes.html">Opcodes</a>
+    <a href="examples.html">Examples</a>
+  </nav>
+  <div class="topbar-right"><span class="topbar-badge">v6.3</span></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a class="sidebar-link" href="../index.html"><span class="icon">◈</span>Introduction</a>
+    <a class="sidebar-link" href="getting-started.html"><span class="icon">↓</span>Getting Started</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Writing Code</div>
+    <a class="sidebar-link" href="blocks-xml.html"><span class="icon">~</span>Blocks XML</a>
+    <a class="sidebar-link" href="opcodes.html"><span class="icon">≡</span>Opcode Reference</a>
+    <a class="sidebar-link" href="inputs-fields.html"><span class="icon">⌥</span>Inputs &amp; Fields</a>
+    <a class="sidebar-link" href="project-xml.html"><span class="icon">#</span>Project XML</a>
+    <a class="sidebar-link active" href="costumes.html"><span class="icon">◉</span>Costume Shapes</a>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Guides</div>
+    <a class="sidebar-link" href="examples.html"><span class="icon">▷</span>Examples</a>
+    <a class="sidebar-link" href="troubleshooting.html"><span class="icon">!</span>Troubleshooting</a>
+    <a class="sidebar-link" href="hosting.html"><span class="icon">↗</span>Hosting on GitHub</a>
+  </aside>
+  <div class="content-wrap">
+    <main class="content">
+      <div class="page-header">
+        <div class="breadcrumb"><a href="../index.html">docs</a><span class="sep">/</span><span>costumes</span></div>
+        <h1>Costume Shapes</h1>
+        <p class="lead">The injector auto-generates PNG costumes from shape descriptors. No external image files required — just attributes.</p>
+        <div class="meta"><span class="meta-tag green">Project XML feature</span></div>
+      </div>
+
+      <div class="doc-section" id="how-it-works">
+        <h2 class="section-title"><span class="num">01</span>How It Works</h2>
+        <p>When you use Project XML mode, the injector renders each <code>&lt;costume&gt;</code> element onto an HTML5 Canvas, converts it to a PNG, computes a real MD5 hash of the image data, and registers it with Scratch's asset storage — all in the browser, in real time.</p>
+        <p>This means you get valid, injected costumes without needing any image file or external upload.</p>
+      </div>
+
+      <div class="doc-section" id="circle">
+        <h2 class="section-title"><span class="num">02</span>Circle Costumes</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">XML</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-cm">&lt;!-- Solid filled circle --&gt;</span>
+<span class="t-tag">&lt;costume</span> <span class="t-attr">name</span>=<span class="t-val">"ball"</span>
+         <span class="t-attr">type</span>=<span class="t-val">"circle"</span>
+         <span class="t-attr">color</span>=<span class="t-val">"#4c8fff"</span>
+         <span class="t-attr">size</span>=<span class="t-val">"60"</span><span class="t-tag">/&gt;</span>
+
+<span class="t-cm">&lt;!-- Circle with outline stroke --&gt;</span>
+<span class="t-tag">&lt;costume</span> <span class="t-attr">name</span>=<span class="t-val">"ball-outlined"</span>
+         <span class="t-attr">type</span>=<span class="t-val">"circle"</span>
+         <span class="t-attr">color</span>=<span class="t-val">"#ff4488"</span>
+         <span class="t-attr">stroke</span>=<span class="t-val">"#ffffff"</span>
+         <span class="t-attr">stroke-width</span>=<span class="t-val">"4"</span>
+         <span class="t-attr">size</span>=<span class="t-val">"60"</span><span class="t-tag">/&gt;</span></code></pre>
+        </div>
+
+        <div class="attr-grid">
+          <div class="attr-card"><div class="attr-name">name</div><div class="attr-type">string</div><div class="attr-desc">Costume display name shown in the editor.</div><div class="attr-default">Default: "costume1"</div></div>
+          <div class="attr-card"><div class="attr-name">type</div><div class="attr-type">"circle"</div><div class="attr-desc">Must be exactly <code>circle</code> to render as a circle.</div></div>
+          <div class="attr-card"><div class="attr-name">color</div><div class="attr-type">CSS hex string</div><div class="attr-desc">Fill colour of the circle.</div><div class="attr-default">Default: #4c4fff</div></div>
+          <div class="attr-card"><div class="attr-name">size</div><div class="attr-type">number (pixels)</div><div class="attr-desc">Diameter of the circle in pixels. The canvas is padded to accommodate stroke.</div><div class="attr-default">Default: 80</div></div>
+          <div class="attr-card"><div class="attr-name">stroke</div><div class="attr-type">CSS hex or "none"</div><div class="attr-desc">Outline colour. Set to <code>none</code> to disable.</div><div class="attr-default">Default: none</div></div>
+          <div class="attr-card"><div class="attr-name">stroke-width</div><div class="attr-type">number (pixels)</div><div class="attr-desc">Thickness of the outline. 0 means no outline.</div><div class="attr-default">Default: 0</div></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="rectangle">
+        <h2 class="section-title"><span class="num">03</span>Rectangle Costumes</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">XML</span><button class="copy-btn">Copy</button></div>
+          <pre><code><span class="t-cm">&lt;!-- Sharp-cornered rectangle --&gt;</span>
+<span class="t-tag">&lt;costume</span> <span class="t-attr">name</span>=<span class="t-val">"platform"</span>
+         <span class="t-attr">type</span>=<span class="t-val">"rectangle"</span>
+         <span class="t-attr">color</span>=<span class="t-val">"#4CAF50"</span>
+         <span class="t-attr">width</span>=<span class="t-val">"120"</span>
+         <span class="t-attr">height</span>=<span class="t-val">"20"</span><span class="t-tag">/&gt;</span>
+
+<span class="t-cm">&lt;!-- Rounded rectangle --&gt;</span>
+<span class="t-tag">&lt;costume</span> <span class="t-attr">name</span>=<span class="t-val">"card"</span>
+         <span class="t-attr">type</span>=<span class="t-val">"rectangle"</span>
+         <span class="t-attr">color</span>=<span class="t-val">"#ff4455"</span>
+         <span class="t-attr">width</span>=<span class="t-val">"80"</span>
+         <span class="t-attr">height</span>=<span class="t-val">"80"</span>
+         <span class="t-attr">radius</span>=<span class="t-val">"12"</span>
+         <span class="t-attr">stroke</span>=<span class="t-val">"#ff8888"</span>
+         <span class="t-attr">stroke-width</span>=<span class="t-val">"3"</span><span class="t-tag">/&gt;</span></code></pre>
+        </div>
+
+        <div class="attr-grid">
+          <div class="attr-card"><div class="attr-name">type</div><div class="attr-type">"rectangle"</div><div class="attr-desc">Must be exactly <code>rectangle</code> to render as a rectangle.</div></div>
+          <div class="attr-card"><div class="attr-name">color</div><div class="attr-type">CSS hex string</div><div class="attr-desc">Fill colour of the rectangle.</div></div>
+          <div class="attr-card"><div class="attr-name">width</div><div class="attr-type">number (pixels)</div><div class="attr-desc">Width of the rectangle. If 0, falls back to <code>size</code>.</div></div>
+          <div class="attr-card"><div class="attr-name">height</div><div class="attr-type">number (pixels)</div><div class="attr-desc">Height of the rectangle. If 0, falls back to <code>size</code>.</div></div>
+          <div class="attr-card"><div class="attr-name">radius</div><div class="attr-type">number (pixels)</div><div class="attr-desc">Corner radius. 0 = sharp corners, any positive value = rounded corners.</div><div class="attr-default">Default: 0</div></div>
+          <div class="attr-card"><div class="attr-name">stroke / stroke-width</div><div class="attr-type">string / number</div><div class="attr-desc">Same as circle — outline colour and thickness.</div></div>
+        </div>
+      </div>
+
+      <div class="doc-section" id="tips">
+        <h2 class="section-title"><span class="num">04</span>Tips &amp; Limitations</h2>
+        <div class="callout info">
+          <div class="callout-icon">ℹ</div>
+          <div>The <strong>rotation center</strong> of auto-generated costumes is automatically set to the geometric center of the shape, accounting for stroke width. This matches Scratch's default behavior for most shapes.</div>
+        </div>
+        <div class="callout warn">
+          <div class="callout-icon">⚠</div>
+          <div>Only <code>circle</code> and <code>rectangle</code> are supported. For arbitrary shapes or real artwork, use the normal Scratch costume editor and only use the injector for block scripts.</div>
+        </div>
+        <p>If two costumes produce identical PNG data (same attributes), they will share the same asset ID. This is harmless — Scratch handles de-duplication internally.</p>
+      </div>
+
+      <div class="doc-footer">
+        <div class="footer-note">Last updated · v6.3</div>
+        <div class="doc-nav-btns">
+          <a class="doc-nav-btn prev" href="project-xml.html"><span class="nav-label">Previous</span><span class="nav-title">Project XML</span></a>
+          <a class="doc-nav-btn next" href="examples.html"><span class="nav-label">Next</span><span class="nav-title">Examples</span></a>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="../assets/js/wiki.js"></script>
+</body>
+</html>
