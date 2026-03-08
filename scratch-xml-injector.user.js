@@ -2188,6 +2188,14 @@
   };
 
   /* ======================================================
+     STATUS HELPERS
+  ====================================================== */
+  const si = (m, c='') => { const s=document.getElementById('__sxi_st_i'); s.textContent=m; s.className='sxi_st '+c; };
+  const se = (m, c='') => { const s=document.getElementById('__sxi_st_e'); s.textContent=m; s.className='sxi_st '+c; };
+  const prog = p => { document.getElementById('__sxi_prog').style.width = p + '%'; };
+
+
+  /* ======================================================
      MODE TOGGLE
   ====================================================== */
   let mode = 'replace'; // 'project' | 'merge' | 'replace' | 'append'
@@ -2254,13 +2262,6 @@
       });
     });
   });
-
-  /* ======================================================
-     STATUS HELPERS
-  ====================================================== */
-  const si = (m, c='') => { const s=document.getElementById('__sxi_st_i'); s.textContent=m; s.className='sxi_st '+c; };
-  const se = (m, c='') => { const s=document.getElementById('__sxi_st_e'); s.textContent=m; s.className='sxi_st '+c; };
-  const prog = p => { document.getElementById('__sxi_prog').style.width = p + '%'; };
 
   /* ======================================================
      CLOSE
